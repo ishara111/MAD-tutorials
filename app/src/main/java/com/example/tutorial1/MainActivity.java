@@ -81,9 +81,16 @@ public class MainActivity extends AppCompatActivity {
         Editable editable2 = input2.getText();
         String str1 = editable1.toString();
         String str2 = editable2.toString();
-        if ((!str1.isEmpty()) || (!str2.isEmpty()))
+        if (!str1.isEmpty())
         {
             num1 = Double.parseDouble(str1);
+        }
+        else
+        {
+            notEmpty = false;
+        }
+        if (!str2.isEmpty())
+        {
             num2 = Double.parseDouble(str2);
         }
         else
