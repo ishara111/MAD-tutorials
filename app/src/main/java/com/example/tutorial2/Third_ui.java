@@ -27,6 +27,7 @@ public class Third_ui extends AppCompatActivity {
     EditText weight,height;
     Button next_button;
     Slider weight_slider,height_slider;
+    String type;
     @Override
     protected void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -42,7 +43,7 @@ public class Third_ui extends AppCompatActivity {
         height = (EditText) findViewById(R.id.height);
 
         Intent intent = getIntent();
-        String type = intent.getStringExtra("type");
+        type = intent.getStringExtra("type");
         type_text.setText("You have selected\n "+type+" system");
 
         if (type.equals("metric"))
@@ -162,7 +163,12 @@ public class Third_ui extends AppCompatActivity {
         next_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                if (!(weight.getText().toString().isEmpty()) && !(height.getText().toString().isEmpty()))
+                {
+                    double weight_amount = Double.parseDouble(weight.getText().toString());
+                    double height_amount = Double.parseDouble(height.getText().toString());
+                    startActivityForResult(Fourth_ui.getIntent(Third_ui.this, type,weight_amount,height_amount), 1);
+                }
             }
         });
 
