@@ -22,7 +22,7 @@
         android:id="@+id/height_unit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="KG"
+        android:text="CM"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -48,8 +48,8 @@
 
     <EditText
         android:id="@+id/height"
-        android:layout_width="141dp"
-        android:layout_height="35dp"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
         android:ems="10"
         android:inputType="numberSigned|number|numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,7 +70,7 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.091" />
+        app:layout_constraintVertical_bias="0.068" />
 
     <TextView
         android:id="@+id/weight_text"
@@ -115,8 +115,8 @@
 
     <EditText
         android:id="@+id/weight"
-        android:layout_width="141dp"
-        android:layout_height="35dp"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
         android:ems="10"
         android:inputType="numberSigned|number|numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
