@@ -67,8 +67,8 @@ public class Selector extends Fragment {
         View view = inflater.inflate(R.layout.fragment_selector, container, false);
         RecyclerView rv = view.findViewById(R.id.selectorRecyclerView);
         rv.setLayoutManager(ln);
-        RAdapter rAdapter = new RAdapter();
-        rv.setAdapter(rAdapter);
+        SelectorAdapter selectorAdapter = new SelectorAdapter();
+        rv.setAdapter(selectorAdapter);
         return view;
     }
 }

@@ -7,22 +7,20 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.util.ArrayList;
-
-public class RAdapter extends RecyclerView.Adapter<RviewHolder>{
+public class SelectorAdapter extends RecyclerView.Adapter<SelectorViewHolder>{
     StructureData sd;
 
     @NonNull
     @Override
-    public RviewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public SelectorViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.list_selection,parent,false);
-        RviewHolder rviewHolder = new RviewHolder(view);
-        return rviewHolder;
+        SelectorViewHolder selectorViewHolder = new SelectorViewHolder(view);
+        return selectorViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull RviewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull SelectorViewHolder holder, int position) {
         holder.selectIcon.setImageResource(sd.get().get(position).getDrawableId());
 
         holder.selectText.setText(sd.get().get(position).getLabel());

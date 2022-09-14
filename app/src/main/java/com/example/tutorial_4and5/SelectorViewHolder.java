@@ -8,11 +8,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-public class RviewHolder extends RecyclerView.ViewHolder {
+public class SelectorViewHolder extends RecyclerView.ViewHolder {
     ViewGroup parent;
     TextView selectText;
     ImageView selectIcon;
-    public RviewHolder(@NonNull View itemView) {
+    public SelectorViewHolder(@NonNull View itemView) {
         super(itemView);
 
         selectText = itemView.findViewById(R.id.SelectIconText);
