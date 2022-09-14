@@ -1,6 +1,7 @@
 package com.example.tutorial_4and5;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -15,19 +16,21 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        recycView = (RecyclerView) findViewById(R.id.mapRecyclerView);
-        recycView.setLayoutManager(new GridLayoutManager(
-                getActivity(),
-                MapData.HEIGHT,
-                GridLayoutManager.HORIZONTAL,
-                false));
 
-        //int row = position % MapData.HEIGHT;
-        //int col = position / MapData.HEIGHT;
+        FragmentManager selectFrag = getSupportFragmentManager();
+        Selector selector = (Selector) selectFrag.findFragmentById(R.id.selector);
+        if (selector == null){
+            selector = new Selector();
+            selectFrag.beginTransaction().add(R.id.selector, selector).commit();
+        }
 
-    }
+        FragmentManager mapfrag = getSupportFragmentManager();
+        Map map = (Map) mapfrag.findFragmentById(R.id.map);
+        if (map == null){
+            map = new Map();
+            mapfrag.beginTransaction().add(R.id.map, map).commit();
+        }
 
-    private Activity getActivity() {
-        return null;
+
     }
 }

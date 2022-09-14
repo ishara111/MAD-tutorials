@@ -1,6 +1,74 @@
 package com.example.tutorial_4and5;
 
-import android.app.Activity;
 
-public class Selector extends Activity {
+import android.os.Bundle;
+
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link Selector#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class Selector extends Fragment {
+
+    // TODO: Rename parameter arguments, choose names that match
+    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
+
+    // TODO: Rename and change types of parameters
+    private String mParam1;
+    private String mParam2;
+
+    public Selector() {
+        // Required empty public constructor
+    }
+
+    /**
+     * Use this factory method to create a new instance of
+     * this fragment using the provided parameters.
+     *
+     * @param param1 Parameter 1.
+     * @param param2 Parameter 2.
+     * @return A new instance of fragment Selector.
+     */
+    // TODO: Rename and change types and number of parameters
+    public static Selector newInstance(String param1, String param2) {
+        Selector fragment = new Selector();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
+    }
+
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if (getArguments() != null) {
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
+        }
+    }
+
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        LinearLayoutManager ln = new LinearLayoutManager(getContext());
+        ln.setOrientation(ln.HORIZONTAL);
+        View view = inflater.inflate(R.layout.fragment_selector, container, false);
+        RecyclerView rv = view.findViewById(R.id.selectorRecyclerView);
+        rv.setLayoutManager(ln);
+        RAdapter rAdapter = new RAdapter();
+        rv.setAdapter(rAdapter);
+        return view;
+    }
 }
