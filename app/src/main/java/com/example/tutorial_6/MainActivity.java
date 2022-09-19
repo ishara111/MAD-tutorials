@@ -14,6 +14,8 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+
+
         // We've set everything up inside a fragment. This isn't strictly necessary, but can assist
         // maintainability, because fragments permit greater UI design flexibility.
         FragmentManager fm = getSupportFragmentManager();

@@ -56,6 +56,7 @@ public class MainFragment extends Fragment
         nameSpinner.setSelection(0);
         nameEditor.setVisibility(View.VISIBLE);
 
+
         // We have two UI elements: a drop-down list (Spinner) and an editor (EditText). We want to
         // hide the editor *unless* the spinner's position is zero ("Custom..."). This event handler
         // arranges the the necessary state changes.
@@ -102,10 +103,16 @@ public class MainFragment extends Fragment
 
                 // Create and add the new faction. This gives us the position at which the faction
                 // was added to the list, which is important because...
+
                 int insertPosition = factionList.add(new Faction(
                     name,
                     Integer.parseInt(strength.getText().toString()),
                     relationship.getSelectedItemPosition()));
+
+//                int strengthVal = Integer.parseInt(strength.getText().toString());
+//                int relation = relationship.getSelectedItemPosition();
+//                Faction faction= new Faction(name,strengthVal,relation);
+//                int insertPosition= factionList.add(faction);
 
                 // ... we need to notify the adapter where the new item was inserted. And we'd also
                 // like to scroll to that position to ensure it's visible.
