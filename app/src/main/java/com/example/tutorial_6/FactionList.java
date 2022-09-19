@@ -39,7 +39,7 @@ public class FactionList
 
     public int add(Faction newFaction)
     {
-        //factions.add(newFaction);
+        factions.removeAll(factions);
         ContentValues cv = new ContentValues();
         cv.put(FactionTable.Cols.ID, newFaction.getId());
         cv.put(FactionTable.Cols.NAME, newFaction.getName());
@@ -62,19 +62,45 @@ public class FactionList
         }
 
 
-
-        //return (int)DatabaseUtils.queryNumEntries(db, FactionTable.NAME));
-
         return factions.size() - 1; // Return insertion point
     }
 
     public void edit(Faction newFaction)
     {
-        // ...
+        factions.removeAll(factions);
+
+        ContentValues cv = new ContentValues();
+        cv.put(FactionTable.Cols.ID, newFaction.getId());
+        cv.put(FactionTable.Cols.NAME, newFaction.getName());
+        cv.put(FactionTable.Cols.STRENGTH, newFaction.getStrength());
+        cv.put(FactionTable.Cols.RELATIONSHIP, newFaction.getRelationship());
+        db.update(FactionTable.NAME,cv,FactionTable.Cols.NAME+"=?",new String[]{newFaction.getName()});
+        db.execSQL("UPDATE "+FactionTable.NAME+" SET "+FactionTable.Cols.ID+"="+"'"+newFaction.getId()+"'"+","
+                +FactionTable.Cols.NAME+"="+"'"+newFaction.getName()+"'"+","
+                +FactionTable.Cols.STRENGTH+"="+"'"+newFaction.getStrength()+"'"+","
+                +FactionTable.Cols.RELATIONSHIP+"="+"'"+newFaction.getRelationship()+"'"+" WHERE "+FactionTable.Cols.ID+"="+"'"+newFaction.getId()+"'");
+
+
+        Cursor cursor = db.query(FactionTable.NAME,null,null,null,null,null,null);
+        FactionDBCursor factionDBCursor = new FactionDBCursor(cursor);
+
+        try{
+            factionDBCursor.moveToFirst();
+            while(!factionDBCursor.isAfterLast()){
+                factions.add(factionDBCursor.getfaction());
+                factionDBCursor.moveToNext();
+            }
+        }
+        finally {
+            cursor.close();
+        }
     }
 
     public void remove(Faction rmFaction)
     {
+        //int t = db.delete(FactionTable.NAME, FactionTable.Cols.NAME + "=" + rmFaction.getName(), null);
+        //System.out.println(t);
+        db.execSQL("DELETE FROM " + FactionTable.NAME+ " WHERE "+FactionTable.Cols.ID+"='"+rmFaction.getId()+"'");
         factions.remove(rmFaction);
         // ...
     }

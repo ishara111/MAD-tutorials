@@ -19,9 +19,7 @@ public class FactionDBHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
-        sqLiteDatabase.execSQL("create table "+ FactionTable.NAME+"("+FactionTable.Cols.ID+" INT, "
-                +FactionTable.Cols.NAME+" TEXT, "+FactionTable.Cols.STRENGTH+" INT, "
-                + FactionTable.Cols.RELATIONSHIP+ " INT);");
+        sqLiteDatabase.execSQL("create table "+ FactionTable.NAME+"("+FactionTable.Cols.ID+" TEXT, " +FactionTable.Cols.NAME+" TEXT, "+FactionTable.Cols.STRENGTH+" TEXT, " + FactionTable.Cols.RELATIONSHIP+ " TEXT);");
 
     }
 
