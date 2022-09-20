@@ -5,7 +5,7 @@
     android:id="@+id/HotPicks_frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".HotPicks_fragment">
+    tools:context=".hot_picks.HotPicks_fragment">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/HotPicks_recyclerview"

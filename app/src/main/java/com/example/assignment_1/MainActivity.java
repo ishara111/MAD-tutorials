@@ -10,6 +10,9 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.example.assignment_1.hot_picks.HotPicks_fragment;
+import com.example.assignment_1.order_history.OrderHistory_fragment;
+import com.example.assignment_1.restaurants.Restaurant_fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;

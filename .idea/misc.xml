@@ -3,16 +3,19 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/drawable-v24/rounded_corner.xml" value="0.2265" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/drawable/ic_baseline_shopping_basket_24.xml" value="0.1" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/drawable/ic_hot_picks.xml" value="0.2415" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/drawable/ic_launcher_background.xml" value="0.2265" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/drawable/ic_order_history.xml" value="0.2415" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/drawable/ic_restaurants.xml" value="0.1" />
+        <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/drawable/rounded_corner.xml" value="0.2265" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/layout/fragment_add_to_basket.xml" value="0.2" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/layout/fragment_hot_picks.xml" value="0.1" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/layout/fragment_order_history.xml" value="0.1" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/layout/fragment_restaurant.xml" value="0.2" />
-        <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/layout/item_list.xml" value="0.264" />
+        <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/layout/item_list.xml" value="0.4" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/menu/bottom_navigation.xml" value="0.1" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/menu/checkout_menu.xml" value="0.25416666666666665" />
       </map>
