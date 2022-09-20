@@ -1,11 +1,18 @@
 package com.example.assignment_1;
 
+import java.util.ArrayList;
 import java.util.List;
 
-public class Restaurants {
+public class Restaurant {
     public String name;
-    public String img;
-    public List<FoodItems> foodItems;
+    public int img;
+    public ArrayList<FoodItem> items;
+
+    public Restaurant(String name, int img, ArrayList<FoodItem> items) {
+        this.name = name;
+        this.img = img;
+        this.items = items;
+    }
 }
 
 //ADD LOGIN FRAGMENT , FOOD ITEM LIST FRAGMENT , ADD TO CART(WILL HAVE BUTTON TO CONT BROWSING AND + - BUTTON ALSO) FRAGMENT

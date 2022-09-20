@@ -12,7 +12,21 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import java.util.ArrayList;
+import java.util.Collections;
+
 public class MainActivity extends AppCompatActivity {
+
+    ArrayList<FoodItem> items;
+    ArrayList<Restaurant> restaurants;
+
+    public MainActivity()
+    {
+        items = new ArrayList<FoodItem>();
+        restaurants = new ArrayList<Restaurant>();
+        GenerateLists fil = new GenerateLists(items, restaurants);
+        Collections.shuffle(items);
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HotPicks_fragment()).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HotPicks_fragment(items)).commit();
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -30,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment frag = null;
             if (item.getItemId()==R.id.nav_hot_picks){
-                frag = new HotPicks_fragment();
+                frag = new HotPicks_fragment(items);
             }else if (item.getItemId()==R.id.nav_restaurants){
-                frag = new Restaurant_fragment();
+                frag = new Restaurant_fragment(restaurants);
             }else if (item.getItemId()==R.id.nav_order_history){
                 frag = new OrderHistory_fragment();
             }
