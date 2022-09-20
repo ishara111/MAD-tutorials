@@ -22,11 +22,13 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<FoodItem> items;
     ArrayList<Restaurant> restaurants;
+    public ArrayList<Checkout> checkoutList;
 
     public MainActivity()
     {
         items = new ArrayList<FoodItem>();
         restaurants = new ArrayList<Restaurant>();
+        checkoutList = new ArrayList<Checkout>();
         GenerateLists fil = new GenerateLists(items, restaurants);
         Collections.shuffle(items);
     }

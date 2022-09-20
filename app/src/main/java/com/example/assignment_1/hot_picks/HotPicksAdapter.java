@@ -33,7 +33,7 @@ public class HotPicksAdapter extends RecyclerView.Adapter<HotPicksViewHolder>{
 
         holder.itemImg.setImageResource(items.get(position).img);
         holder.itemName.setText(items.get(position).name);
-        holder.itemPrice.setText(String.valueOf(items.get(position).priceWithSign));
+        holder.itemPrice.setText("$"+String.valueOf(items.get(position).price));
         holder.addButton.setText("Add");
 
     }

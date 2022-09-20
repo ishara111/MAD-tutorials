@@ -1,5 +1,6 @@
 package com.example.assignment_1.hot_picks;
 
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -39,9 +40,13 @@ public class HotPicksViewHolder extends RecyclerView.ViewHolder{
             @Override
             public void onClick(View view) {
 
+                AddToBasket_fragment addtoBasketFrag = new AddToBasket_fragment();
+                Bundle args = new Bundle();
+                args.putString("name",itemName.getText().toString());
+                args.putString("price",itemPrice.getText().toString());
+                addtoBasketFrag.setArguments(args);
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new AddToBasket_fragment()).addToBackStack(null).commit();
-                //activity.getSupportFragmentManager().popBackStackImmediate();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,addtoBasketFrag).addToBackStack(null).commit();
             }
         });
     }

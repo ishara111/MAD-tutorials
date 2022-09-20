@@ -4,7 +4,6 @@ public class FoodItem {
     public String name;
     public int img;
     public String restaurant;
-    public String priceWithSign;
     public double price;
 
 
@@ -12,7 +11,6 @@ public class FoodItem {
         this.name = name;
         this.img = img;
         this.restaurant = restaurant;
-        this.priceWithSign = "$"+price;
         this.price = price;
     }
 }
