@@ -9,12 +9,15 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.assignment_1.Checkout;
 import com.example.assignment_1.FoodItem;
 import com.example.assignment_1.R;
 import com.example.assignment_1.res_items.ResItemsAdapter;
 
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -81,6 +84,19 @@ public class Checkout_fragment extends Fragment {
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         CheckoutAdapter myAdapter = new CheckoutAdapter(checkoutList);
         rv.setAdapter(myAdapter);
+
+        double allTotalPrice=0;
+        DecimalFormat df = new DecimalFormat("#.##");
+        TextView allTotalPriceTxt = (TextView) view.findViewById(R.id.checkout_all_total);
+        Button checkoutBtn = (Button) view.findViewById(R.id.checkout_button);
+
+        for (Checkout c : checkoutList) {
+            allTotalPrice = Double.parseDouble(df.format(allTotalPrice + c.totalPrice));
+        }
+
+
+        allTotalPriceTxt.setText("Total: $"+String.valueOf(allTotalPrice));
+
 
         return view;
     }
