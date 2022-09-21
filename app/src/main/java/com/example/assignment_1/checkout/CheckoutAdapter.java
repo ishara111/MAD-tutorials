@@ -34,7 +34,6 @@ public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutViewHolder>{
         //holder.item = checkoutList.get(position);
         //holder.itemImg.setImageResource(checkoutList.get(position).item);
         //holder.itemImg.setTag(checkoutList.get(position).img);
-        holder.adapter = this;
         holder.checkoutList = checkoutList;
         holder.checkoutItem = checkoutList.get(position);
         holder.itemName.setText(checkoutList.get(position).itemName);

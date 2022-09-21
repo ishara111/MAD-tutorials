@@ -8,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.assignment_1.AddToBasket_fragment;
@@ -24,7 +25,6 @@ public class CheckoutViewHolder extends RecyclerView.ViewHolder{
     Button delButton;
     Checkout checkoutItem;
     ArrayList<Checkout> checkoutList;
-    CheckoutAdapter adapter;
     public CheckoutViewHolder(@NonNull View itemView) {
         super(itemView);
         itemImg = itemView.findViewById(R.id.checkout_itemImg);
@@ -58,7 +58,16 @@ public class CheckoutViewHolder extends RecyclerView.ViewHolder{
             @Override
             public void onClick(View view) {
                 checkoutList.remove(checkoutItem);
-                adapter.notifyItemRemoved(getAdapterPosition());
+
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                Fragment frag = null;
+                frag = activity.getSupportFragmentManager().findFragmentById(R.id.fragment_container);
+                activity.getSupportFragmentManager().beginTransaction().remove(frag).commit();
+                activity.getSupportFragmentManager().popBackStack();
+
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Checkout_fragment(checkoutList)).addToBackStack(null).commit();
+                //activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Checkout_fragment(checkoutList))
+                       // .addToBackStack(null).commit();
             }
         });
     }
