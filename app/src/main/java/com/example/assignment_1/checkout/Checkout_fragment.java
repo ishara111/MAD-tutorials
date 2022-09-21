@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.assignment_1.Checkout;
 import com.example.assignment_1.FoodItem;
+import com.example.assignment_1.Login_fragment;
 import com.example.assignment_1.R;
 import com.example.assignment_1.res_items.ResItemsAdapter;
 
@@ -96,6 +97,13 @@ public class Checkout_fragment extends Fragment {
 
 
         allTotalPriceTxt.setText("Total: $"+String.valueOf(allTotalPrice));
+
+        checkoutBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Login_fragment()).addToBackStack(null).commit();
+            }
+        });
 
 
         return view;
