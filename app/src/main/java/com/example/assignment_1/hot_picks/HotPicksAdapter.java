@@ -31,7 +31,9 @@ public class HotPicksAdapter extends RecyclerView.Adapter<HotPicksViewHolder>{
     @Override
     public void onBindViewHolder(@NonNull HotPicksViewHolder holder, int position) {
 
+        holder.item = items.get(position);
         holder.itemImg.setImageResource(items.get(position).img);
+        holder.itemImg.setTag(items.get(position).img);
         holder.itemName.setText(items.get(position).name);
         holder.itemPrice.setText("$"+String.valueOf(items.get(position).price));
         holder.addButton.setText("Add");

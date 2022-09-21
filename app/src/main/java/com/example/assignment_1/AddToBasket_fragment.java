@@ -1,5 +1,6 @@
 package com.example.assignment_1;
 
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,8 +10,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.android.material.snackbar.Snackbar;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
@@ -30,6 +35,7 @@ public class AddToBasket_fragment extends Fragment {
     private String mParam2;
 
     Double total;
+    int amount;
 
 
     public AddToBasket_fragment() {
@@ -78,12 +84,18 @@ public class AddToBasket_fragment extends Fragment {
         Button backButton = (Button) view.findViewById(R.id.add_back_btn);
         Button plusBtn = (Button) view.findViewById(R.id.add_plus_btn);
         Button minusBtn = (Button) view.findViewById(R.id.add_minus_btn);
+        ImageView itemImg=(ImageView) view.findViewById(R.id.add_item_img);
 
+        String img = getArguments().getString("img");
         String name = getArguments().getString("name");
         String priceStr = getArguments().getString("price");
         Double price = Double.valueOf(priceStr.replace("$", ""));
+        amount = Integer.parseInt(itemAmount.getText().toString());
         total = Double.parseDouble(itemAmount.getText().toString())*price;
+        String resName = getArguments().getString("res");
+        DecimalFormat df = new DecimalFormat("#.##");
 
+        itemImg.setImageResource(Integer.parseInt(img));
         itemName.setText(name);
         itemPrice.setText(priceStr);
         itemTotal.setText(total.toString());
@@ -94,17 +106,20 @@ public class AddToBasket_fragment extends Fragment {
         addToBasketBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                checkoutList.add(new Checkout(name,price,amount,total,resName));
+                String snack_text = (amount+" "+name+" Added To Basket");
+                Snackbar.make(getActivity().findViewById(android.R.id.content), snack_text, Snackbar.LENGTH_SHORT).show();
+                getActivity().getSupportFragmentManager().popBackStackImmediate();
             }
         });
 
         plusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int amount = Integer.parseInt(itemAmount.getText().toString());
+                amount = Integer.parseInt(itemAmount.getText().toString());
                 amount +=1;
                 itemAmount.setText(""+amount);
-                total = price * amount;
+                total = Double.parseDouble(df.format(price * amount));
                 itemTotal.setText(total.toString());
 
             }
@@ -114,12 +129,12 @@ public class AddToBasket_fragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                int amount = Integer.parseInt(itemAmount.getText().toString());
+                amount = Integer.parseInt(itemAmount.getText().toString());
                 if(amount!=1)
                 {
                     amount -=1;
                     itemAmount.setText(""+amount);
-                    total = price * amount;
+                    total = Double.parseDouble(df.format(price * amount));
                     itemTotal.setText(total.toString());
                 }
             }

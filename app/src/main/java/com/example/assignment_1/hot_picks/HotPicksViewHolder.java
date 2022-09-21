@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.assignment_1.AddToBasket_fragment;
+import com.example.assignment_1.FoodItem;
 import com.example.assignment_1.R;
 
 public class HotPicksViewHolder extends RecyclerView.ViewHolder{
@@ -20,6 +21,7 @@ public class HotPicksViewHolder extends RecyclerView.ViewHolder{
     TextView itemName;
     TextView itemPrice;
     Button addButton;
+    FoodItem item;
     public HotPicksViewHolder(@NonNull View itemView) {
         super(itemView);
         itemImg = itemView.findViewById(R.id.itemImg);
@@ -44,6 +46,8 @@ public class HotPicksViewHolder extends RecyclerView.ViewHolder{
                 Bundle args = new Bundle();
                 args.putString("name",itemName.getText().toString());
                 args.putString("price",itemPrice.getText().toString());
+                args.putString("img",itemImg.getTag().toString());
+                args.putString("res",item.restaurant);
                 addtoBasketFrag.setArguments(args);
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,addtoBasketFrag).addToBackStack(null).commit();
