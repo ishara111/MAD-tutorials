@@ -5,6 +5,7 @@ public class FoodItem {
     public int img;
     public String restaurant;
     public double price;
+    public double totPrice;
 
 
     public FoodItem(String name, int img, String restaurant, double price) {
@@ -12,5 +13,6 @@ public class FoodItem {
         this.img = img;
         this.restaurant = restaurant;
         this.price = price;
+        this.totPrice=price;
     }
 }

@@ -42,10 +42,14 @@ public class ResItemsViewHolder extends RecyclerView.ViewHolder{
 
                 AddToBasket_fragment addtoBasketFrag = new AddToBasket_fragment();
                 Bundle args = new Bundle();
+                args.putString("title","Add To Basket");
+                args.putString("amount","1");
                 args.putString("name",itemName.getText().toString());
                 args.putString("price",itemPrice.getText().toString());
+                args.putString("totalPrice",String.valueOf(item.totPrice));
                 args.putString("img",itemImg.getTag().toString());
                 args.putString("res",item.restaurant);
+                args.putString("update","false");
                 addtoBasketFrag.setArguments(args);
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,addtoBasketFrag).addToBackStack(null).commit();
