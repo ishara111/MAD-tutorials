@@ -2,13 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/HotPicks_frameLayout"
+    android:id="@+id/res_items_frameLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".hot_picks.HotPicks_fragment">
+    tools:context=".res_items.ResItems_fragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/HotPicks_recyclerview"
+        android:id="@+id/res_items_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

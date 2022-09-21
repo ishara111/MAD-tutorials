@@ -1,7 +1,6 @@
-package com.example.assignment_1.hot_picks;
+package com.example.assignment_1.res_items;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -9,20 +8,19 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.assignment_1.AddToBasket_fragment;
 import com.example.assignment_1.FoodItem;
 import com.example.assignment_1.R;
 
-public class HotPicksViewHolder extends RecyclerView.ViewHolder{
+public class ResItemsViewHolder extends RecyclerView.ViewHolder{
     ImageView itemImg;
     TextView itemName;
     TextView itemPrice;
     Button addButton;
     FoodItem item;
-    public HotPicksViewHolder(@NonNull View itemView) {
+    public ResItemsViewHolder(@NonNull View itemView) {
         super(itemView);
         itemImg = itemView.findViewById(R.id.itemImg);
         itemName = itemView.findViewById(R.id.itemName);

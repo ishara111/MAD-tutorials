@@ -5,13 +5,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com.example.assignment_1.hot_picks.HotPicks_fragment;
+import com.example.assignment_1.checkout.Checkout_fragment;
+import com.example.assignment_1.res_items.ResItems_fragment;
 import com.example.assignment_1.order_history.OrderHistory_fragment;
 import com.example.assignment_1.restaurants.Restaurant_fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HotPicks_fragment(items)).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ResItems_fragment(items)).commit();
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment frag = null;
             if (item.getItemId()==R.id.nav_hot_picks){
-                frag = new HotPicks_fragment(items);
+                frag = new ResItems_fragment(items);
             }else if (item.getItemId()==R.id.nav_restaurants){
                 frag = new Restaurant_fragment(restaurants);
             }else if (item.getItemId()==R.id.nav_order_history){
@@ -72,7 +72,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId()==R.id.checkout_icon_menu)
         {
-            Toast.makeText(this,"checjout",Toast.LENGTH_SHORT).show();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Checkout_fragment(checkoutList))
+                    .addToBackStack(null).commit();
         }
 //        switch (item.getItemId()){
 //            case  R.id.checkout_icon_menu:

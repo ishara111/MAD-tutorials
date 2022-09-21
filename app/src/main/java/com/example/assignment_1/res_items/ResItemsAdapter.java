@@ -1,4 +1,4 @@
-package com.example.assignment_1.hot_picks;
+package com.example.assignment_1.res_items;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,24 +12,24 @@ import com.example.assignment_1.R;
 
 import java.util.ArrayList;
 
-public class HotPicksAdapter extends RecyclerView.Adapter<HotPicksViewHolder>{
+public class ResItemsAdapter extends RecyclerView.Adapter<ResItemsViewHolder>{
     ArrayList<FoodItem> items;
 
-    public HotPicksAdapter(ArrayList<FoodItem> items) {
+    public ResItemsAdapter(ArrayList<FoodItem> items) {
         this.items = items;
     }
 
     @NonNull
     @Override
-    public HotPicksViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public ResItemsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
         View view = layoutInflater.inflate(R.layout.item_list,parent,false);
-        HotPicksViewHolder hotPicksViewHolder = new HotPicksViewHolder(view);
+        ResItemsViewHolder hotPicksViewHolder = new ResItemsViewHolder(view);
         return hotPicksViewHolder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull HotPicksViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ResItemsViewHolder holder, int position) {
 
         holder.item = items.get(position);
         holder.itemImg.setImageResource(items.get(position).img);
