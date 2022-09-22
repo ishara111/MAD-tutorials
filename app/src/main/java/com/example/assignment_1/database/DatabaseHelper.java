@@ -19,6 +19,15 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + DatabaseSchema.UsersTable.Cols.EMAIL+" TEXT, "
                 + DatabaseSchema.UsersTable.Cols.PASSWORD+" TEXT);");
 
+        sqLiteDatabase.execSQL("create table "+ DatabaseSchema.OrdersTable.NAME+"("+ DatabaseSchema.OrdersTable.Cols.ITEM_ID+" INTEGER, "
+                + DatabaseSchema.OrdersTable.Cols.ITEM_NAME+" TEXT, "
+                + DatabaseSchema.OrdersTable.Cols.ITEM_PRICE+" DOUBLE, "
+                + DatabaseSchema.OrdersTable.Cols.ITEM_TOTAL_PRICE+" DOUBLE,"
+                + DatabaseSchema.OrdersTable.Cols.ITEM_AMOUNT+" INTEGER, "
+                + DatabaseSchema.OrdersTable.Cols.ITEM_IMG+" INTEGER, "
+                + DatabaseSchema.OrdersTable.Cols.ITEM_RESTAURANT+" TEXT, "
+                + DatabaseSchema.OrdersTable.Cols.USERNAME+" TEXT);");
+
     }
 
     @Override

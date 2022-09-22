@@ -1,14 +1,21 @@
 package com.example.assignment_1.order_history;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.assignment_1.History;
 import com.example.assignment_1.R;
+import com.example.assignment_1.database.DatabaseHelper;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,8 +33,16 @@ public class OrderHistory_fragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    public SQLiteDatabase db;
+
+    ArrayList<History> historyList;
+
     public OrderHistory_fragment() {
         // Required empty public constructor
+    }
+    public OrderHistory_fragment(ArrayList<History> historyList) {
+        // Required empty public constructor
+        this.historyList = historyList;
     }
 
     /**
@@ -61,6 +76,18 @@ public class OrderHistory_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_order_history, container, false);
+       View view = inflater.inflate(R.layout.fragment_order_history, container, false);
+
+        //db = new DatabaseHelper(container.getContext()).getWritableDatabase();
+        //MainActivity ma = (MainActivity)getActivity();
+
+
+
+        RecyclerView rv = view.findViewById(R.id.order_history_recyclerview);
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        OrderHistoryAdapter orderAdapter = new OrderHistoryAdapter(historyList);
+        rv.setAdapter(orderAdapter);
+
+       return view;
     }
 }

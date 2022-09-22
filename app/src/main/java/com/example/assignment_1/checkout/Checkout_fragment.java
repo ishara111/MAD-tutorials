@@ -1,11 +1,15 @@
 package com.example.assignment_1.checkout;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,15 +17,19 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.assignment_1.Checkout;
-import com.example.assignment_1.FoodItem;
+import com.example.assignment_1.History;
 import com.example.assignment_1.Login_fragment;
 import com.example.assignment_1.MainActivity;
+import com.example.assignment_1.Order;
 import com.example.assignment_1.R;
-import com.example.assignment_1.res_items.ResItemsAdapter;
+import com.example.assignment_1.database.DatabaseCursor;
+import com.example.assignment_1.database.DatabaseHelper;
+import com.example.assignment_1.database.DatabaseSchema;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -38,6 +46,8 @@ public class Checkout_fragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    public SQLiteDatabase db;
 
     ArrayList<Checkout> checkoutList;
 
@@ -83,6 +93,8 @@ public class Checkout_fragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_checkout, container, false);
 
+        db = new DatabaseHelper(container.getContext()).getWritableDatabase();
+
         RecyclerView rv = view.findViewById(R.id.checkout_recyclerview);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));
         CheckoutAdapter myAdapter = new CheckoutAdapter(checkoutList);
@@ -110,7 +122,53 @@ public class Checkout_fragment extends Fragment {
                 {
                     if (loggedIn == true)
                     {
+                        Log.d(null,""+getLastId());
+                        int id = getLastId();
+                        for (Checkout c:checkoutList) {
+                            ContentValues cv = new ContentValues();
+                            cv.put(DatabaseSchema.OrdersTable.Cols.ITEM_ID, (id+1));
+                            cv.put(DatabaseSchema.OrdersTable.Cols.ITEM_NAME, c.itemName);
+                            cv.put(DatabaseSchema.OrdersTable.Cols.ITEM_PRICE, c.itemPrice);
+                            cv.put(DatabaseSchema.OrdersTable.Cols.ITEM_TOTAL_PRICE, c.totalPrice);
+                            cv.put(DatabaseSchema.OrdersTable.Cols.ITEM_AMOUNT, c.itemAmount);
+                            cv.put(DatabaseSchema.OrdersTable.Cols.ITEM_IMG, c.itemImg);
+                            cv.put(DatabaseSchema.OrdersTable.Cols.ITEM_RESTAURANT, c.restaurant);
+                            cv.put(DatabaseSchema.OrdersTable.Cols.USERNAME,ma.loggedUserName );
+                            db.insert(DatabaseSchema.OrdersTable.NAME, null, cv);
 
+                            String snack_text = ("Order Placed Successfully");
+                            Snackbar.make(getActivity().findViewById(android.R.id.content), snack_text, Snackbar.LENGTH_SHORT).show();
+
+
+                            ArrayList<Order> tmp = new ArrayList<Order>();
+                            Cursor cursor = db.query(DatabaseSchema.OrdersTable.NAME,null,null,null,null,null,null);
+                            DatabaseCursor databaseCursor = new DatabaseCursor(cursor);
+
+                            try{
+                                databaseCursor.moveToFirst();
+                                while(!databaseCursor.isAfterLast()){
+                                    tmp.add(databaseCursor.getOrder());
+                                    databaseCursor.moveToNext();
+                                }
+                            }
+                            finally {
+                                cursor.close();
+                            }
+                            ma.historyList.removeAll(ma.historyList);
+                            for (int i = 0; i <=(id+2) ; i++) {
+                                for (Order o : tmp) {
+                                    if (o.username.equals(ma.loggedUserName) && o.orderId==i)
+                                    {
+                                        ma.orderList.add(o);
+                                    }
+                                }
+                                if (ma.orderList.size()>0)
+                                {
+                                    ma.historyList.add(new History(i, ma.orderList));
+                                }
+                                ma.orderList.removeAll(ma.orderList); //THE ORDERHISTORY PART TO ORDERHISTIRY FRAGMENT
+                            }
+                        }
                     }
                     else{
                         getActivity().getSupportFragmentManager().beginTransaction()
@@ -127,5 +185,18 @@ public class Checkout_fragment extends Fragment {
 
 
         return view;
+    }
+
+    public int getLastId() {
+        int id = 0;
+        //SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(DatabaseSchema.OrdersTable.NAME, new String[] {DatabaseSchema.OrdersTable.Cols.ITEM_ID}, null, null, null, null, null);
+
+        if (cursor.moveToLast()) {
+            id = cursor.getInt(0);
+        }
+
+        cursor.close();
+        return id;
     }
 }

@@ -186,12 +186,12 @@ public class Login_fragment extends Fragment {
                                 MainActivity ma = (MainActivity)getActivity();
                                 ma.loggedIn = true;
                                 ma.loggedUserName = u.email;
-                                String snack_text = ("Successfully Logged In");
+                                String snack_text = ("Successfully Logged In As "+u.email);
                                 Snackbar.make(getActivity().findViewById(android.R.id.content), snack_text, Snackbar.LENGTH_SHORT).show();
                                 if (itsOrder)
                                 {
                                     getActivity().getSupportFragmentManager().popBackStack();
-                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new OrderHistory_fragment())
+                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new OrderHistory_fragment(ma.historyList))
                                             .commit();
                                 }
                                 else

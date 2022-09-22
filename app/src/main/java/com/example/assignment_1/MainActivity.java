@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<FoodItem> items;
     ArrayList<Restaurant> restaurants;
     public ArrayList<Checkout> checkoutList;
+    public ArrayList<Order> orderList;
+    public ArrayList<History> historyList;
     public boolean loggedIn;
     public String loggedUserName;
 
@@ -31,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
     {
         loggedIn = false;
         loggedUserName = "";
+        historyList = new ArrayList<History>();
+        orderList = new ArrayList<Order>();
         items = new ArrayList<FoodItem>();
         restaurants = new ArrayList<Restaurant>();
         checkoutList = new ArrayList<Checkout>();
@@ -63,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
                     frag = new Login_fragment(true);
                 }
                 else{
-                    frag = new OrderHistory_fragment();
+                    frag = new OrderHistory_fragment(historyList);
                 }
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,frag).commit();
