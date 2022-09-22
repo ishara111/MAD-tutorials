@@ -15,8 +15,10 @@ import android.widget.TextView;
 import com.example.assignment_1.Checkout;
 import com.example.assignment_1.FoodItem;
 import com.example.assignment_1.Login_fragment;
+import com.example.assignment_1.MainActivity;
 import com.example.assignment_1.R;
 import com.example.assignment_1.res_items.ResItemsAdapter;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -101,7 +103,25 @@ public class Checkout_fragment extends Fragment {
         checkoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Login_fragment()).addToBackStack(null).commit();
+                MainActivity ma = (MainActivity)getActivity();
+                boolean loggedIn = ma.loggedIn;
+
+                if (checkoutList.size()!=0)
+                {
+                    if (loggedIn == true)
+                    {
+
+                    }
+                    else{
+                        getActivity().getSupportFragmentManager().beginTransaction()
+                                .replace(R.id.fragment_container,new Login_fragment())
+                                .addToBackStack(null).commit();
+                    }
+                }
+                else{
+                    String snack_text = ("Checkout Is Empty");
+                    Snackbar.make(getActivity().findViewById(android.R.id.content), snack_text, Snackbar.LENGTH_SHORT).show();
+                }
             }
         });
 

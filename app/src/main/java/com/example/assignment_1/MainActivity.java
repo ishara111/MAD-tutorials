@@ -24,9 +24,13 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<FoodItem> items;
     ArrayList<Restaurant> restaurants;
     public ArrayList<Checkout> checkoutList;
+    public boolean loggedIn;
+    public String loggedUserName;
 
     public MainActivity()
     {
+        loggedIn = false;
+        loggedUserName = "";
         items = new ArrayList<FoodItem>();
         restaurants = new ArrayList<Restaurant>();
         checkoutList = new ArrayList<Checkout>();

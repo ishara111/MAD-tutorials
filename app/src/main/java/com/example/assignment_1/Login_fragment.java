@@ -1,12 +1,27 @@
 package com.example.assignment_1;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+
+import com.example.assignment_1.database.DatabaseCursor;
+import com.example.assignment_1.database.DatabaseSchema.UsersTable;
 
 import androidx.fragment.app.Fragment;
 
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+
+import com.example.assignment_1.database.DatabaseHelper;
+import com.google.android.material.snackbar.Snackbar;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -23,10 +38,13 @@ public class Login_fragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    boolean emailValid;
+    public SQLiteDatabase db;
 
     public Login_fragment() {
         // Required empty public constructor
     }
+
 
     /**
      * Use this factory method to create a new instance of
@@ -59,6 +77,144 @@ public class Login_fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_login, container, false);
+        db = new DatabaseHelper(container.getContext()).getWritableDatabase();
+
+        View view = inflater.inflate(R.layout.fragment_login, container, false);
+
+        EditText emailBox = (EditText) view.findViewById(R.id.loginRegister_username);
+        EditText passwordBox = (EditText) view.findViewById(R.id.loginRegister_password);
+        Button loginBtn = (Button) view.findViewById(R.id.loginBtn);
+        Button registerBtn = (Button) view.findViewById(R.id.registerBtn);
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z]+";
+        emailValid = false;
+
+        emailBox.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable editable) {
+                if (!emailBox.getText().toString().matches(emailPattern) && editable.length() > 0){
+                    emailBox.setError("Email not valid");
+                    emailValid = false;
+                }
+                else{
+                    emailValid = true;
+                }
+            }
+        });
+
+        registerBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (emailBox.getText().toString().equals(""))
+                {
+                    emailBox.setError("Email cannot be empty");
+                }
+                if (passwordBox.getText().toString().equals(""))
+                {
+                    passwordBox.setError("Password cannot be empty");
+                }
+                else if (emailValid ==true) {
+                    String snack_text;
+                    User user = new User(emailBox.getText().toString(), passwordBox.getText().toString());
+                    if (userExist(user.email)==false) {
+                        ContentValues cv = new ContentValues();
+                        cv.put(UsersTable.Cols.ID, user.userid);
+                        cv.put(UsersTable.Cols.EMAIL, user.email);
+                        cv.put(UsersTable.Cols.PASSWORD, user.password);
+                        long res = db.insert(UsersTable.NAME, null, cv);
+
+                        snack_text = ("Successfully Registered Account");
+                    }
+                    else {
+                        snack_text = ("User already exists");
+                    }
+                    Snackbar.make(getActivity().findViewById(android.R.id.content), snack_text, Snackbar.LENGTH_SHORT).show();
+                }
+            }
+        });
+
+        loginBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (emailBox.getText().toString().equals(""))
+                {
+                    emailBox.setError("Email cannot be empty");
+                }
+                if (passwordBox.getText().toString().equals(""))
+                {
+                    passwordBox.setError("Password cannot be empty");
+                }
+                else if (emailValid ==true)
+                {
+                    ArrayList<User> userList = new ArrayList<User>();
+
+
+
+                    Cursor cursor = db.query(UsersTable.NAME,null,null,null,null,null,null);
+                    DatabaseCursor databaseCursor = new DatabaseCursor(cursor);
+
+                    try{
+                        databaseCursor.moveToFirst();
+                        while(!databaseCursor.isAfterLast()){
+                            userList.add(databaseCursor.getUser());
+                            databaseCursor.moveToNext();
+                        }
+                    }
+                    finally {
+                        cursor.close();
+                    }
+
+                    if(userExist(emailBox.getText().toString())==true)
+                    {
+                        for (User u:userList) {
+                            if (u.email.equals(emailBox.getText().toString()) && u.password.equals(passwordBox.getText().toString()))
+                            {
+                                MainActivity ma = (MainActivity)getActivity();
+                                ma.loggedIn = true;
+                                ma.loggedUserName = u.email;
+                                String snack_text = ("Successfully Logged In");
+                                Snackbar.make(getActivity().findViewById(android.R.id.content), snack_text, Snackbar.LENGTH_SHORT).show();
+                                getActivity().getSupportFragmentManager().popBackStackImmediate();
+                            }
+                            else
+                            {
+                                String snack_text = ("Incorrect Username Or password");
+                                Snackbar.make(getActivity().findViewById(android.R.id.content), snack_text, Snackbar.LENGTH_SHORT).show();
+                            }
+                        }
+                    }
+                    else {
+                        String snack_text = ("User Does Not Exist Register First");
+                        Snackbar.make(getActivity().findViewById(android.R.id.content), snack_text, Snackbar.LENGTH_SHORT).show();
+                    }
+
+                }
+
+            }
+        });
+
+        return view;
     }
-}
+
+    public boolean userExist(String email) {
+
+        boolean found = false;
+        Cursor csr = db.query(UsersTable.NAME, null,
+                UsersTable.Cols.EMAIL + "=?", new String[]{email}, null, null, null);
+        if (csr.getCount() > 0) {
+            found = true;
+        }
+        csr.close();
+        return found;
+    }
+
+    }
