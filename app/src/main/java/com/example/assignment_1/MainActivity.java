@@ -58,7 +58,13 @@ public class MainActivity extends AppCompatActivity {
             }else if (item.getItemId()==R.id.nav_restaurants){
                 frag = new Restaurant_fragment(restaurants);
             }else if (item.getItemId()==R.id.nav_order_history){
-                frag = new OrderHistory_fragment();
+                if (loggedIn == false)
+                {
+                    frag = new Login_fragment(true);
+                }
+                else{
+                    frag = new OrderHistory_fragment();
+                }
             }
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,frag).commit();
             return true;

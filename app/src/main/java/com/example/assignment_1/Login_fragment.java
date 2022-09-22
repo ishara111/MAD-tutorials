@@ -19,6 +19,7 @@ import android.widget.Button;
 import android.widget.EditText;
 
 import com.example.assignment_1.database.DatabaseHelper;
+import com.example.assignment_1.order_history.OrderHistory_fragment;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
@@ -38,11 +39,15 @@ public class Login_fragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    boolean emailValid;
+    boolean emailValid,itsOrder;
     public SQLiteDatabase db;
 
     public Login_fragment() {
         // Required empty public constructor
+    }
+    public Login_fragment(boolean itsOrder) {
+        // Required empty public constructor
+        this.itsOrder = itsOrder;
     }
 
 
@@ -183,7 +188,16 @@ public class Login_fragment extends Fragment {
                                 ma.loggedUserName = u.email;
                                 String snack_text = ("Successfully Logged In");
                                 Snackbar.make(getActivity().findViewById(android.R.id.content), snack_text, Snackbar.LENGTH_SHORT).show();
-                                getActivity().getSupportFragmentManager().popBackStackImmediate();
+                                if (itsOrder)
+                                {
+                                    getActivity().getSupportFragmentManager().popBackStack();
+                                    getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new OrderHistory_fragment())
+                                            .commit();
+                                }
+                                else
+                                {
+                                    getActivity().getSupportFragmentManager().popBackStackImmediate();
+                                }
                             }
                             else
                             {
