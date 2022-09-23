@@ -40,6 +40,7 @@ public class CheckoutAdapter extends RecyclerView.Adapter<CheckoutViewHolder>{
         holder.itemTotal.setText("$"+String.valueOf(checkoutList.get(position).totalPrice));
         holder.itemAmount.setText(String.valueOf(checkoutList.get(position).itemAmount)+" X");
         holder.itemImg.setImageResource(checkoutList.get(position).itemImg);
+        holder.restaurant.setText(checkoutList.get(position).restaurant);
     }
 
     @Override

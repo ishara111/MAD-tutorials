@@ -22,6 +22,7 @@ public class CheckoutViewHolder extends RecyclerView.ViewHolder{
     TextView itemName;
     TextView itemAmount;
     TextView itemTotal;
+    TextView restaurant;
     Button delButton;
     Checkout checkoutItem;
     ArrayList<Checkout> checkoutList;
@@ -31,6 +32,7 @@ public class CheckoutViewHolder extends RecyclerView.ViewHolder{
         itemName = itemView.findViewById(R.id.checkout_itemName);
         itemTotal = itemView.findViewById(R.id.checkout_item_total);
         itemAmount = itemView.findViewById(R.id.checkout_itemAmount);
+        restaurant = itemView.findViewById(R.id.checkout_restaurant);
         delButton = itemView.findViewById(R.id.checkout_delBtn);
 
         itemView.setOnClickListener(new View.OnClickListener() {
