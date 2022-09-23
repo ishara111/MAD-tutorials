@@ -5,6 +5,7 @@ import android.view.View;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.assignment_1.Order;
@@ -15,7 +16,8 @@ import java.util.ArrayList;
 public class OrderHistoryViewHolder extends RecyclerView.ViewHolder{
     TextView orderNum,orderPrice;
     ArrayList<Order> orderList;
-    double allItemTotal=0;
+    String id;
+    String total;
     public OrderHistoryViewHolder(@NonNull View itemView) {
         super(itemView);
         orderNum = itemView.findViewById(R.id.order_item_name);
@@ -24,11 +26,9 @@ public class OrderHistoryViewHolder extends RecyclerView.ViewHolder{
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                for (Order o:orderList) {
-                    allItemTotal = allItemTotal + o.itemTotalPrice;
-                    Log.d(null,"====="+o.itemName);
-                }
-                Log.d(null,"====="+allItemTotal);
+
+                AppCompatActivity activity = (AppCompatActivity) view.getContext();
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new HistoryList_fragment(orderList,id,total)).addToBackStack(null).commit();
             }
         });
     }

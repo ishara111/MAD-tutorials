@@ -27,16 +27,7 @@ public class ResItemsViewHolder extends RecyclerView.ViewHolder{
         itemPrice = itemView.findViewById(R.id.itemPrice);
         addButton = itemView.findViewById(R.id.itemButton);
 
-//        itemView.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Log.d(null,"clicked");
-//                AppCompatActivity activity = (AppCompatActivity) view.getContext();
-//                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new AddToBasket_fragment()).commit();
-//            }
-//        });
-
-        addButton.setOnClickListener(new View.OnClickListener() {
+        itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
@@ -53,6 +44,14 @@ public class ResItemsViewHolder extends RecyclerView.ViewHolder{
                 addtoBasketFrag.setArguments(args);
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
                 activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,addtoBasketFrag).addToBackStack(null).commit();
+            }
+        });
+
+        addButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
             }
         });
     }
