@@ -31,7 +31,8 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder{
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();
-                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ResItems_fragment(items))
+                activity.getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new ResItems_fragment(items,resName.getText().toString()))
                         .addToBackStack(null).commit();
             }
         });

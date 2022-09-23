@@ -2,9 +2,9 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/nav_hot_picks"
+        android:id="@+id/nav_top_picks"
         android:icon="@drawable/ic_hot_picks"
-        android:title="Hot Picks" />
+        android:title="Top Picks" />
 
     <item
         android:id="@+id/nav_restaurants"

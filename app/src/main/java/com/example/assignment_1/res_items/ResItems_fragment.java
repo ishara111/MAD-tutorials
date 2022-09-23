@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.assignment_1.FoodItem;
 import com.example.assignment_1.R;
@@ -32,13 +33,15 @@ public class ResItems_fragment extends Fragment {
     private String mParam2;
 
     ArrayList<FoodItem> items;
+    String resName;
 
     public ResItems_fragment() {
         // Required empty public constructor
     }
 
-    public ResItems_fragment(ArrayList<FoodItem> items) {
+    public ResItems_fragment(ArrayList<FoodItem> items,String resName) {
         this.items = items;
+        this.resName = resName;
     }
 
     /**
@@ -74,6 +77,19 @@ public class ResItems_fragment extends Fragment {
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_res_items, container, false);
+
+        TextView title;
+        title = view.findViewById(R.id.res_items_text);
+
+        if(resName.equals(""))
+        {
+            title.setText("Top Picks");
+        }
+        else
+        {
+            title.setText(resName);
+        }
+
 
         RecyclerView rv = view.findViewById(R.id.res_items_recyclerview);
         rv.setLayoutManager(new LinearLayoutManager(getContext()));

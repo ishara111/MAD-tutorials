@@ -47,15 +47,15 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ResItems_fragment(items)).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ResItems_fragment(items,"")).commit();
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem item) {
             Fragment frag = null;
-            if (item.getItemId()==R.id.nav_hot_picks){
-                frag = new ResItems_fragment(items);
+            if (item.getItemId()==R.id.nav_top_picks){
+                frag = new ResItems_fragment(items,"");
             }else if (item.getItemId()==R.id.nav_restaurants){
                 frag = new Restaurant_fragment(restaurants);
             }else if (item.getItemId()==R.id.nav_order_history){
