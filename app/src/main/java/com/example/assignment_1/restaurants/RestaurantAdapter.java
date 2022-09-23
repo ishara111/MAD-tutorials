@@ -36,7 +36,6 @@ public class RestaurantAdapter extends RecyclerView.Adapter<RestaurantViewHolder
         holder.resImg.setImageResource(restaurants.get(position).img);
         holder.resName.setText(restaurants.get(position).name);
         holder.no_text.setText("");
-        holder.viewButton.setText("View");
     }
 
     @Override

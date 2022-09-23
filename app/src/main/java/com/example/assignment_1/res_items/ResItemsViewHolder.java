@@ -18,14 +18,12 @@ public class ResItemsViewHolder extends RecyclerView.ViewHolder{
     ImageView itemImg;
     TextView itemName;
     TextView itemPrice;
-    Button addButton;
     FoodItem item;
     public ResItemsViewHolder(@NonNull View itemView) {
         super(itemView);
         itemImg = itemView.findViewById(R.id.itemImg);
         itemName = itemView.findViewById(R.id.itemName);
         itemPrice = itemView.findViewById(R.id.itemPrice);
-        addButton = itemView.findViewById(R.id.itemButton);
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,12 +45,5 @@ public class ResItemsViewHolder extends RecyclerView.ViewHolder{
             }
         });
 
-        addButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-
-            }
-        });
     }
 }

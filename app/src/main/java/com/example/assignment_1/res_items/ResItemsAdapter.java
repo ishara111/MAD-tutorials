@@ -36,7 +36,6 @@ public class ResItemsAdapter extends RecyclerView.Adapter<ResItemsViewHolder>{
         holder.itemImg.setTag(items.get(position).img);
         holder.itemName.setText(items.get(position).name);
         holder.itemPrice.setText("$"+String.valueOf(items.get(position).price));
-        holder.addButton.setText("Add");
 
     }
 

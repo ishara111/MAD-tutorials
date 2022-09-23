@@ -35,7 +35,7 @@ public class HistoryListAdapter extends RecyclerView.Adapter<HistoryListViewHold
         holder.itemAmount.setText(String.valueOf(orderList.get(position).itemAmount)+"X");
         holder.itemImg.setImageResource(orderList.get(position).itemImg);
         holder.itemName.setText(orderList.get(position).itemName);
-        holder.itemTotal.setText(String.valueOf(orderList.get(position).itemTotalPrice));
+        holder.itemTotal.setText("$"+String.valueOf(orderList.get(position).itemTotalPrice));
         holder.restaurant.setText(orderList.get(position).restaurant);
 
     }

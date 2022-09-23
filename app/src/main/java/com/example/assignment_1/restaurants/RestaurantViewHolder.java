@@ -19,16 +19,15 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder{
     ImageView resImg;
     TextView resName;
     TextView no_text;
-    Button viewButton;
     ArrayList<FoodItem> items;
     public RestaurantViewHolder(@NonNull View itemView) {
         super(itemView);
         resImg = itemView.findViewById(R.id.itemImg);
         resName = itemView.findViewById(R.id.itemName);
         no_text = itemView.findViewById(R.id.itemPrice);
-        viewButton = itemView.findViewById(R.id.itemButton);
 
-        viewButton.setOnClickListener(new View.OnClickListener() {
+
+        itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 AppCompatActivity activity = (AppCompatActivity) view.getContext();

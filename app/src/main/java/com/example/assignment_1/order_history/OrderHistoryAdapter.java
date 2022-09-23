@@ -42,10 +42,10 @@ public class OrderHistoryAdapter extends RecyclerView.Adapter<OrderHistoryViewHo
             allItemTotal = allItemTotal + o.itemTotalPrice;
         }
 
-        holder.orderPrice.setText("Total: "+ df.format(allItemTotal));
+        holder.orderPrice.setText("Total: $"+ df.format(allItemTotal));
 
         holder.id = "Order#000"+String.valueOf(historyList.get(position).id);
-        holder.total = "Total: "+ df.format(allItemTotal);
+        holder.total = "Total: $"+ df.format(allItemTotal);
 
 
     }
