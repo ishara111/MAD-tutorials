@@ -1,49 +1,70 @@
 package com.example.assignment_1;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.example.assignment_1.database.DatabaseCursor;
+import com.example.assignment_1.database.DatabaseHelper;
+import com.example.assignment_1.database.DatabaseSchema;
+
 import java.util.ArrayList;
 
 public class GenerateLists {
     ArrayList<FoodItem> items;
     ArrayList<Restaurant> restaurants;
+    SQLiteDatabase db;
 
-    public GenerateLists(ArrayList<FoodItem> items, ArrayList<Restaurant> restaurants) {
+    public GenerateLists(ArrayList<FoodItem> items, ArrayList<Restaurant> restaurants,SQLiteDatabase db) {
         this.items = items;
         this.restaurants = restaurants;
+        this.db = db;
+
 
         generateItems();
         generateRestaurants();
     }
 
-    private void generateItems(){
-        items.add(new FoodItem("Fries",R.drawable.mcfries,"MC Donald's",2));
-        items.add(new FoodItem("Chicken",R.drawable.kfc,"KFC",5.99));
-        items.add(new FoodItem("Wings",R.drawable.kfcwings,"KFC",8.22));
-        items.add(new FoodItem("Fries",R.drawable.mcfries,"MC Donald's",2));
-        items.add(new FoodItem("Ice Cream",R.drawable.icecream,"MC Donald's",1.99));
-        items.add(new FoodItem("Fries",R.drawable.mcfries,"MC Donald's",2));
-        items.add(new FoodItem("Chicken",R.drawable.kfc,"KFC",5.99));
-        items.add(new FoodItem("Wings",R.drawable.kfcwings,"KFC",8.22));
-        items.add(new FoodItem("Fries",R.drawable.mcfries,"MC Donald's",2));
-        items.add(new FoodItem("Ice Cream",R.drawable.icecream,"MC Donald's",1.99));        items.add(new FoodItem("Fries",R.drawable.mcfries,"MC Donald's",2));
-        items.add(new FoodItem("Chicken",R.drawable.kfc,"KFC",5.99));
-        items.add(new FoodItem("Wings",R.drawable.kfcwings,"KFC",8.22));
-        items.add(new FoodItem("Fries",R.drawable.mcfries,"MC Donald's",2));
-        items.add(new FoodItem("Ice Cream",R.drawable.icecream,"MC Donald's",1.99));        items.add(new FoodItem("Fries",R.drawable.mcfries,"MC Donald's",2));
-        items.add(new FoodItem("Chicken",R.drawable.kfc,"KFC",5.99));
-        items.add(new FoodItem("Wings",R.drawable.kfcwings,"KFC",8.22));
-        items.add(new FoodItem("Fries",R.drawable.mcfries,"MC Donald's",2));
-        items.add(new FoodItem("Ice Cream",R.drawable.icecream,"MC Donald's",1.99));
 
+
+    private void generateItems(){
+
+        //ArrayList<Order> tmp = new ArrayList<Order>();
+        Cursor cursor = db.query(DatabaseSchema.ItemTable.NAME,null,null,null,null,null,null);
+        DatabaseCursor databaseCursor = new DatabaseCursor(cursor);
+
+        try{
+            databaseCursor.moveToFirst();
+            while(!databaseCursor.isAfterLast()){
+                items.add(databaseCursor.getItem());
+                databaseCursor.moveToNext();
+            }
+        }
+        finally {
+            cursor.close();
+        }
 
     }
 
     private void generateRestaurants(){
+        ArrayList<ResDB> res= new ArrayList<ResDB>();
+        Cursor cursor = db.query(DatabaseSchema.RestaurantTable.NAME,null,null,null,null,null,null);
+        DatabaseCursor databaseCursor = new DatabaseCursor(cursor);
 
-        restaurants.add(new Restaurant("KFC",R.drawable.kfc,getItemsForRes("KFC")));
-        restaurants.add(new Restaurant("MC Donald's",R.drawable.mcdonalds,getItemsForRes("MC Donald's")));
-        restaurants.add(new Restaurant("Pizza Hut",R.drawable.pizzahut,getItemsForRes("Pizza Hut")));
-        restaurants.add(new Restaurant("Burger King",R.drawable.burgerking,getItemsForRes("Burger King")));
-        restaurants.add(new Restaurant("Taco Bell",R.drawable.burgerking,getItemsForRes("Taco Bell")));
+        try{
+            databaseCursor.moveToFirst();
+            while(!databaseCursor.isAfterLast()){
+                res.add(databaseCursor.getRestaurant());
+                databaseCursor.moveToNext();
+            }
+        }
+        finally {
+            cursor.close();
+        }
+        for (ResDB r: res) {
+            restaurants.add(new Restaurant(r.name,r.img,getItemsForRes(r.name)));
+        }
 
     }
 

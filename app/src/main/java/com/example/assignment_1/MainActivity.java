@@ -4,12 +4,14 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 
 import com.example.assignment_1.checkout.Checkout_fragment;
+import com.example.assignment_1.database.DatabaseHelper;
 import com.example.assignment_1.res_items.ResItems_fragment;
 import com.example.assignment_1.order_history.OrderHistory_fragment;
 import com.example.assignment_1.restaurants.Restaurant_fragment;
@@ -26,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public ArrayList<History> historyList;
     public boolean loggedIn;
     public String loggedUserName;
+    SQLiteDatabase db;
 
     public MainActivity()
     {
@@ -35,7 +38,6 @@ public class MainActivity extends AppCompatActivity {
         items = new ArrayList<FoodItem>();
         restaurants = new ArrayList<Restaurant>();
         checkoutList = new ArrayList<Checkout>();
-        GenerateLists fil = new GenerateLists(items, restaurants);
         Collections.shuffle(items);
     }
 
@@ -43,6 +45,9 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        db = new DatabaseHelper(getApplicationContext()).getWritableDatabase();
+        GenerateLists fil = new GenerateLists(items, restaurants,db);
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
@@ -85,6 +90,16 @@ public class MainActivity extends AppCompatActivity {
         {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Checkout_fragment(checkoutList))
                     .addToBackStack(null).commit();
+        }
+        else if(item.getItemId()==R.id.login_icon_menu)
+        {
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Login_fragment(false))
+                    .addToBackStack(null).commit();
+        }
+        else if(item.getItemId()==R.id.logout_icon_menu)
+        {
+            loggedIn =false;
+            loggedUserName = "";
         }
 //        switch (item.getItemId()){
 //            case  R.id.checkout_icon_menu:

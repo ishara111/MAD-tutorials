@@ -3,12 +3,33 @@ package com.example.assignment_1.database;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 
+import com.example.assignment_1.FoodItem;
 import com.example.assignment_1.Order;
+import com.example.assignment_1.ResDB;
 import com.example.assignment_1.User;
 
 public class DatabaseCursor extends CursorWrapper {
     public DatabaseCursor(Cursor cursor) {
         super(cursor);
+    }
+
+    public FoodItem getItem()
+    {
+        String name = getString(getColumnIndex(DatabaseSchema.ItemTable.Cols.NAME));
+        int image = Integer.parseInt(getString(getColumnIndex(DatabaseSchema.ItemTable.Cols.IMAGE)));
+        String restaurant = getString(getColumnIndex(DatabaseSchema.ItemTable.Cols.RESTAURANT));
+        double price = Double.parseDouble(getString(getColumnIndex(DatabaseSchema.ItemTable.Cols.PRICE)));
+        //double totalPrice = Double.parseDouble(getString(getColumnIndex(DatabaseSchema.ItemTable.Cols.TOTPRICE)));
+
+        return new FoodItem(name,image,restaurant,price);
+    }
+
+    public ResDB getRestaurant()
+    {
+        String name = getString(getColumnIndex(DatabaseSchema.RestaurantTable.Cols.NAME));
+        int img = Integer.parseInt(getString(getColumnIndex(DatabaseSchema.RestaurantTable.Cols.IMAGE)));
+
+        return new ResDB(name,img);
     }
 
     public User getUser()
