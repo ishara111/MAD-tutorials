@@ -1,5 +1,6 @@
 package com.example.assignment_1.order_history;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
@@ -12,8 +13,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.assignment_1.History;
+import com.example.assignment_1.MainActivity;
+import com.example.assignment_1.Order;
 import com.example.assignment_1.R;
+import com.example.assignment_1.database.DatabaseCursor;
 import com.example.assignment_1.database.DatabaseHelper;
+import com.example.assignment_1.database.DatabaseSchema;
 
 import java.util.ArrayList;
 
@@ -78,8 +83,40 @@ public class OrderHistory_fragment extends Fragment {
         // Inflate the layout for this fragment
        View view = inflater.inflate(R.layout.fragment_order_history, container, false);
 
-        //db = new DatabaseHelper(container.getContext()).getWritableDatabase();
-        //MainActivity ma = (MainActivity)getActivity();
+        db = new DatabaseHelper(container.getContext()).getWritableDatabase();
+        MainActivity ma = (MainActivity)getActivity();
+
+
+        int id = getLastId();
+
+        ArrayList<Order> tmp = new ArrayList<Order>();
+        Cursor cursor = db.query(DatabaseSchema.OrdersTable.NAME,null,null,null,null,null,null);
+        DatabaseCursor databaseCursor = new DatabaseCursor(cursor);
+
+        try{
+            databaseCursor.moveToFirst();
+            while(!databaseCursor.isAfterLast()){
+                tmp.add(databaseCursor.getOrder());
+                databaseCursor.moveToNext();
+            }
+        }
+        finally {
+            cursor.close();
+        }
+        ma.historyList.removeAll(ma.historyList);
+        for (int i = 0; i <=(id+2) ; i++) {
+            ArrayList<Order> tempOrder = new ArrayList<Order>();
+            for (Order o : tmp) {
+                if (o.username.equals(ma.loggedUserName) && o.orderId==i)
+                {
+                    tempOrder.add(o);
+                }
+            }
+            if (tempOrder.size()>0)
+            {
+                ma.historyList.add(new History(i, tempOrder));
+            }
+        }
 
 
 
@@ -89,5 +126,18 @@ public class OrderHistory_fragment extends Fragment {
         rv.setAdapter(orderAdapter);
 
        return view;
+    }
+
+    public int getLastId() {
+        int id = 0;
+        //SQLiteDatabase db = dbHelper.getReadableDatabase();
+        Cursor cursor = db.query(DatabaseSchema.OrdersTable.NAME, new String[] {DatabaseSchema.OrdersTable.Cols.ITEM_ID}, null, null, null, null, null);
+
+        if (cursor.moveToLast()) {
+            id = cursor.getInt(0);
+        }
+
+        cursor.close();
+        return id;
     }
 }

@@ -135,40 +135,11 @@ public class Checkout_fragment extends Fragment {
                             cv.put(DatabaseSchema.OrdersTable.Cols.ITEM_RESTAURANT, c.restaurant);
                             cv.put(DatabaseSchema.OrdersTable.Cols.USERNAME,ma.loggedUserName );
                             db.insert(DatabaseSchema.OrdersTable.NAME, null, cv);
-
-                            String snack_text = ("Order Placed Successfully");
-                            Snackbar.make(getActivity().findViewById(android.R.id.content), snack_text, Snackbar.LENGTH_SHORT).show();
-
-
-                            ArrayList<Order> tmp = new ArrayList<Order>();
-                            Cursor cursor = db.query(DatabaseSchema.OrdersTable.NAME,null,null,null,null,null,null);
-                            DatabaseCursor databaseCursor = new DatabaseCursor(cursor);
-
-                            try{
-                                databaseCursor.moveToFirst();
-                                while(!databaseCursor.isAfterLast()){
-                                    tmp.add(databaseCursor.getOrder());
-                                    databaseCursor.moveToNext();
-                                }
-                            }
-                            finally {
-                                cursor.close();
-                            }
-                            ma.historyList.removeAll(ma.historyList);
-                            for (int i = 0; i <=(id+2) ; i++) {
-                                for (Order o : tmp) {
-                                    if (o.username.equals(ma.loggedUserName) && o.orderId==i)
-                                    {
-                                        ma.orderList.add(o);
-                                    }
-                                }
-                                if (ma.orderList.size()>0)
-                                {
-                                    ma.historyList.add(new History(i, ma.orderList));
-                                }
-                                ma.orderList.removeAll(ma.orderList); //THE ORDERHISTORY PART TO ORDERHISTIRY FRAGMENT
-                            }
                         }
+                        ma.checkoutList.removeAll(checkoutList);
+                        String snack_text = ("Order Placed Successfully");
+                        Snackbar.make(getActivity().findViewById(android.R.id.content), snack_text, Snackbar.LENGTH_SHORT).show();
+                        getActivity().getSupportFragmentManager().popBackStackImmediate();
                     }
                     else{
                         getActivity().getSupportFragmentManager().beginTransaction()

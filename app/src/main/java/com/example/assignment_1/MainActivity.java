@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import com.example.assignment_1.checkout.Checkout_fragment;
 import com.example.assignment_1.res_items.ResItems_fragment;
@@ -24,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
     ArrayList<FoodItem> items;
     ArrayList<Restaurant> restaurants;
     public ArrayList<Checkout> checkoutList;
-    public ArrayList<Order> orderList;
     public ArrayList<History> historyList;
     public boolean loggedIn;
     public String loggedUserName;
@@ -34,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
         loggedIn = false;
         loggedUserName = "";
         historyList = new ArrayList<History>();
-        orderList = new ArrayList<Order>();
         items = new ArrayList<FoodItem>();
         restaurants = new ArrayList<Restaurant>();
         checkoutList = new ArrayList<Checkout>();
