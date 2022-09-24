@@ -1,3 +1,4 @@
+/**this fragment shows all orders placed*/
 package com.example.assignment_1.order_history;
 
 import android.database.Cursor;

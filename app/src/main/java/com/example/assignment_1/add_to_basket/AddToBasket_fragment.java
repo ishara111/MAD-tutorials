@@ -75,7 +75,7 @@ public class AddToBasket_fragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
+                             Bundle savedInstanceState) {   //this fragment adds everything to basket
         // Inflate the layout for this fragment
 
         View view = inflater.inflate(R.layout.fragment_add_to_basket, container, false);

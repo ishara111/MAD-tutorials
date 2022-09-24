@@ -1,3 +1,4 @@
+/**this fragment logs/registers user using db*/
 package com.example.assignment_1.login;
 
 import android.content.ContentValues;

@@ -1,3 +1,4 @@
+/**this fragment will insert checkout list to db to save order history**/
 package com.example.assignment_1.checkout;
 
 import android.content.ContentValues;
@@ -120,7 +121,7 @@ public class Checkout_fragment extends Fragment {
                     {
                         Log.d(null,""+getLastId());
                         int id = getLastId();
-                        for (Checkout c:checkoutList) {
+                        for (Checkout c:checkoutList) {  /**adding checkout list to db*/
                             ContentValues cv = new ContentValues();
                             cv.put(DatabaseSchema.OrdersTable.Cols.ITEM_ID, (id+1));
                             cv.put(DatabaseSchema.OrdersTable.Cols.ITEM_NAME, c.itemName);

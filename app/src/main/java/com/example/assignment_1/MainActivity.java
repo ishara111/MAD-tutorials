@@ -1,3 +1,7 @@
+/**Name: Ishara Gomes         *
+*Id: 20534521
+* Assignment-1
+ *******************************/
 package com.example.assignment_1;
 
 import androidx.annotation.NonNull;
@@ -27,6 +31,7 @@ import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
 
+    ArrayList<FoodItem> topPicksList;
     ArrayList<FoodItem> items;
     ArrayList<Restaurant> restaurants;
     public ArrayList<Checkout> checkoutList;
@@ -43,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         items = new ArrayList<FoodItem>();
         restaurants = new ArrayList<Restaurant>();
         checkoutList = new ArrayList<Checkout>();
-        Collections.shuffle(items);
+        topPicksList = new ArrayList<FoodItem>();
     }
 
     @Override
@@ -51,21 +56,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        db = new DatabaseHelper(getApplicationContext()).getWritableDatabase();
-        GetListsFromDB fil = new GetListsFromDB(items, restaurants,db);
+        db = new DatabaseHelper(getApplicationContext()).getWritableDatabase();  //creates all tables and inserts all data to db
+        GetListsFromDB fil = new GetListsFromDB(items, restaurants,db);//gets required data from db
+
+        Collections.shuffle(items);
+        for (int i = 0; i < 15; i++) {
+            topPicksList.add(items.get(i));  //list for the random top picks
+        }
+
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
 
-        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ResItems_fragment(items,"")).commit();
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new ResItems_fragment(topPicksList,"")).commit();
     }
     private BottomNavigationView.OnNavigationItemSelectedListener navListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
         @Override
-        public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        public boolean onNavigationItemSelected(@NonNull MenuItem item) {  //bottom navigation menu
             Fragment frag = null;
             if (item.getItemId()==R.id.nav_top_picks){
-                frag = new ResItems_fragment(items,"");
+                frag = new ResItems_fragment(topPicksList,"");
             }else if (item.getItemId()==R.id.nav_restaurants){
                 frag = new Restaurant_fragment(restaurants);
             }else if (item.getItemId()==R.id.nav_order_history){
@@ -90,7 +101,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {  //action menu
         if (item.getItemId()==R.id.checkout_icon_menu)
         {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,new Checkout_fragment(checkoutList))
@@ -106,10 +117,6 @@ public class MainActivity extends AppCompatActivity {
             loggedIn =false;
             loggedUserName = "";
         }
-//        switch (item.getItemId()){
-//            case  R.id.checkout_icon_menu:
-//                Toast.makeText(this,"checjout",Toast.LENGTH_SHORT);
-//        }
         return super.onOptionsItemSelected(item);
     }
 }

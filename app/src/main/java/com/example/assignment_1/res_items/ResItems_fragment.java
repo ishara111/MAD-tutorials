@@ -1,3 +1,4 @@
+/**frgament is used to show all the food items both hot picks and items of a restaurant*/
 package com.example.assignment_1.res_items;
 
 import android.os.Bundle;

@@ -1,3 +1,4 @@
+/**this fragment shows all the items and their information in a single order*/
 package com.example.assignment_1.order_history;
 
 import android.os.Bundle;

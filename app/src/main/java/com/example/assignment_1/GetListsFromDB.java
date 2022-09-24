@@ -1,3 +1,4 @@
+/**gets all the data from db and puts it into item or restauarnt list*/
 package com.example.assignment_1;
 
 import android.database.Cursor;

@@ -1,3 +1,4 @@
+/**fragment shows all the restaurants */
 package com.example.assignment_1.restaurants;
 
 import android.os.Bundle;
