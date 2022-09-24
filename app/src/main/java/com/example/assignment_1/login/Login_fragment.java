@@ -1,10 +1,13 @@
-package com.example.assignment_1;
+package com.example.assignment_1.login;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 
+import com.example.assignment_1.MainActivity;
+import com.example.assignment_1.R;
+import com.example.assignment_1.models.User;
 import com.example.assignment_1.database.DatabaseCursor;
 import com.example.assignment_1.database.DatabaseSchema.UsersTable;
 

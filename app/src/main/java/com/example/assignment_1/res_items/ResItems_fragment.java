@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.assignment_1.FoodItem;
+import com.example.assignment_1.models.FoodItem;
 import com.example.assignment_1.R;
 
 import java.util.ArrayList;

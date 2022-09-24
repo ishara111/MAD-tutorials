@@ -7,12 +7,10 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.assignment_1.History;
-import com.example.assignment_1.Order;
+import com.example.assignment_1.models.Order;
 import com.example.assignment_1.R;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class HistoryListAdapter extends RecyclerView.Adapter<HistoryListViewHolder>{
     ArrayList<Order> orderList;

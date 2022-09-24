@@ -16,20 +16,16 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.example.assignment_1.Checkout;
-import com.example.assignment_1.History;
-import com.example.assignment_1.Login_fragment;
+import com.example.assignment_1.models.Checkout;
+import com.example.assignment_1.login.Login_fragment;
 import com.example.assignment_1.MainActivity;
-import com.example.assignment_1.Order;
 import com.example.assignment_1.R;
-import com.example.assignment_1.database.DatabaseCursor;
 import com.example.assignment_1.database.DatabaseHelper;
 import com.example.assignment_1.database.DatabaseSchema;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.Collections;
 
 /**
  * A simple {@link Fragment} subclass.

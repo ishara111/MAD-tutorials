@@ -1,4 +1,4 @@
-package com.example.assignment_1;
+package com.example.assignment_1.models;
 
 public class Checkout {
     public int checkId;

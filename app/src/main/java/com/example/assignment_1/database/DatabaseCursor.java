@@ -3,10 +3,10 @@ package com.example.assignment_1.database;
 import android.database.Cursor;
 import android.database.CursorWrapper;
 
-import com.example.assignment_1.FoodItem;
-import com.example.assignment_1.Order;
-import com.example.assignment_1.ResDB;
-import com.example.assignment_1.User;
+import com.example.assignment_1.models.FoodItem;
+import com.example.assignment_1.models.Order;
+import com.example.assignment_1.models.ResDB;
+import com.example.assignment_1.models.User;
 
 public class DatabaseCursor extends CursorWrapper {
     public DatabaseCursor(Cursor cursor) {

@@ -1,6 +1,5 @@
-package com.example.assignment_1;
+package com.example.assignment_1.add_to_basket;
 
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -13,6 +12,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.assignment_1.models.Checkout;
+import com.example.assignment_1.MainActivity;
+import com.example.assignment_1.R;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.text.DecimalFormat;

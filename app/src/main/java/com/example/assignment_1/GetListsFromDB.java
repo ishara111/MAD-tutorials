@@ -1,34 +1,34 @@
 package com.example.assignment_1;
 
-import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.example.assignment_1.database.DatabaseCursor;
-import com.example.assignment_1.database.DatabaseHelper;
 import com.example.assignment_1.database.DatabaseSchema;
+import com.example.assignment_1.models.FoodItem;
+import com.example.assignment_1.models.ResDB;
+import com.example.assignment_1.models.Restaurant;
 
 import java.util.ArrayList;
 
-public class GenerateLists {
+public class GetListsFromDB {
     ArrayList<FoodItem> items;
     ArrayList<Restaurant> restaurants;
     SQLiteDatabase db;
 
-    public GenerateLists(ArrayList<FoodItem> items, ArrayList<Restaurant> restaurants,SQLiteDatabase db) {
+    public GetListsFromDB(ArrayList<FoodItem> items, ArrayList<Restaurant> restaurants, SQLiteDatabase db) {
         this.items = items;
         this.restaurants = restaurants;
         this.db = db;
 
 
-        generateItems();
-        generateRestaurants();
+        getItemsFromDB();
+        getRestaurantsFromDB();
     }
 
 
 
-    private void generateItems(){
+    private void getItemsFromDB(){
 
         //ArrayList<Order> tmp = new ArrayList<Order>();
         Cursor cursor = db.query(DatabaseSchema.ItemTable.NAME,null,null,null,null,null,null);
@@ -47,7 +47,7 @@ public class GenerateLists {
 
     }
 
-    private void generateRestaurants(){
+    private void getRestaurantsFromDB(){
         ArrayList<ResDB> res= new ArrayList<ResDB>();
         Cursor cursor = db.query(DatabaseSchema.RestaurantTable.NAME,null,null,null,null,null,null);
         DatabaseCursor databaseCursor = new DatabaseCursor(cursor);

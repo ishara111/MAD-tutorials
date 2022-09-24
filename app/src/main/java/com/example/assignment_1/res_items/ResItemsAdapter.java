@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.assignment_1.FoodItem;
+import com.example.assignment_1.models.FoodItem;
 import com.example.assignment_1.R;
 
 import java.util.ArrayList;

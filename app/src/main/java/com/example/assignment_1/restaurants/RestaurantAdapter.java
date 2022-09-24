@@ -8,7 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.assignment_1.R;
-import com.example.assignment_1.Restaurant;
+import com.example.assignment_1.models.Restaurant;
 
 import java.util.ArrayList;
 

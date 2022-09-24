@@ -2,7 +2,6 @@ package com.example.assignment_1.res_items;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,8 +9,8 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.assignment_1.AddToBasket_fragment;
-import com.example.assignment_1.FoodItem;
+import com.example.assignment_1.add_to_basket.AddToBasket_fragment;
+import com.example.assignment_1.models.FoodItem;
 import com.example.assignment_1.R;
 
 public class ResItemsViewHolder extends RecyclerView.ViewHolder{

@@ -5,11 +5,9 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.assignment_1.FoodItem;
-import com.example.assignment_1.GenerateLists;
+import com.example.assignment_1.models.FoodItem;
 import com.example.assignment_1.R;
-import com.example.assignment_1.ResDB;
-import com.example.assignment_1.Restaurant;
+import com.example.assignment_1.models.ResDB;
 
 import java.util.ArrayList;
 

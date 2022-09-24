@@ -11,8 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.assignment_1.AddToBasket_fragment;
-import com.example.assignment_1.Checkout;
+import com.example.assignment_1.add_to_basket.AddToBasket_fragment;
+import com.example.assignment_1.models.Checkout;
 import com.example.assignment_1.R;
 
 import java.util.ArrayList;

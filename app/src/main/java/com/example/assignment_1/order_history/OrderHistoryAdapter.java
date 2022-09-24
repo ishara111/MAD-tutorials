@@ -1,6 +1,5 @@
 package com.example.assignment_1.order_history;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,8 +7,8 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.assignment_1.History;
-import com.example.assignment_1.Order;
+import com.example.assignment_1.models.History;
+import com.example.assignment_1.models.Order;
 import com.example.assignment_1.R;
 
 import java.text.DecimalFormat;

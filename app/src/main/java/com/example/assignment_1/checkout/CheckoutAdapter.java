@@ -7,7 +7,7 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.assignment_1.Checkout;
+import com.example.assignment_1.models.Checkout;
 import com.example.assignment_1.R;
 
 import java.util.ArrayList;

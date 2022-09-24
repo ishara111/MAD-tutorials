@@ -1,7 +1,6 @@
-package com.example.assignment_1;
+package com.example.assignment_1.models;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class Restaurant {
     public String name;

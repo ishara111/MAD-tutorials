@@ -12,6 +12,11 @@ import android.view.MenuItem;
 
 import com.example.assignment_1.checkout.Checkout_fragment;
 import com.example.assignment_1.database.DatabaseHelper;
+import com.example.assignment_1.login.Login_fragment;
+import com.example.assignment_1.models.Checkout;
+import com.example.assignment_1.models.FoodItem;
+import com.example.assignment_1.models.History;
+import com.example.assignment_1.models.Restaurant;
 import com.example.assignment_1.res_items.ResItems_fragment;
 import com.example.assignment_1.order_history.OrderHistory_fragment;
 import com.example.assignment_1.restaurants.Restaurant_fragment;
@@ -47,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         db = new DatabaseHelper(getApplicationContext()).getWritableDatabase();
-        GenerateLists fil = new GenerateLists(items, restaurants,db);
+        GetListsFromDB fil = new GetListsFromDB(items, restaurants,db);
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_navigation);
         bottomNav.setOnNavigationItemSelectedListener(navListener);
