@@ -123,7 +123,6 @@ public class AddToBasket_fragment extends Fragment {
                 }
                 else{
                     for (Checkout c: checkoutList) {
-                        Log.d(null,""+c.checkId);
                         if (c.checkId==Integer.valueOf(getArguments().getString("id")))
                         {
                             c.itemAmount = amount;

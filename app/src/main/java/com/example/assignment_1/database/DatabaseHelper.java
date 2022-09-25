@@ -160,4 +160,124 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         }
     }
 
+    /**
+     * ALL IMAGE REFERENECES
+     *
+     * mcdonalds.jpg : https://pixabay.com/photos/donalds-mc-signs-signage-board-387237/
+     *
+     * kfc.jpg : https://pixabay.com/illustrations/poster-kfc-advertising-neon-sign-1049571/
+     *
+     * pizzahut.jpg : https://unsplash.com/photos/XWvqV3AwXVs
+     *
+     * burgerking.jpg : https://unsplash.com/photos/rsNbV-PiCHc
+     *
+     * dominos.jpg : https://unsplash.com/photos/MvtY-vo1lwk
+     *
+     * baskinrobins.jpg : Photo by Teejay: https://www.pexels.com/photo/two-ice-cream-cups-1362534/
+     *
+     * in_n_out.jpg : https://pixabay.com/photos/restaurant-in-n-out-burger-night-5467806/
+     *
+     * subway.jpg : Photo by Rajesh TP: https://www.pexels.com/photo/sandwich-and-slice-of-lemons-1603901/
+     *
+     * mcfries.jpg : Photo by Polina Tankilevitch: https://www.pexels.com/photo/mcdonalds-fries-on-white-surface-4109241/
+     *
+     * nuggets.jpg : Photo by Meggy Kadam Aryanto: https://www.pexels.com/photo/close-up-of-chicken-nuggets-7375449/
+     *
+     * wings1.jpg : Photo by Kai-Chieh Chan: https://www.pexels.com/photo/fried-chicken-on-a-wooden-cutting-board-5652260/
+     *
+     * wings2.jpg : Photo by Pixabay: https://www.pexels.com/photo/close-up-photo-of-fried-chicken-60616/
+     *
+     * wings3.jpg : Photo by Terrance Barksdale: https://www.pexels.com/photo/fried-chicken-on-paper-towel-9872916/
+     *
+     * wings4.jpg : Photo by Gonzalo Ruiz: https://www.pexels.com/photo/close-up-photo-of-fried-chicken-and-french-fries-on-yellow-background-12118979/
+     *
+     * icecream.jpg : Photo by Sittisak C: https://www.pexels.com/photo/photo-of-person-holding-ice-cream-1739347/
+     *
+     * nuggets2.jpg : Photo by jianwei zhu: https://www.pexels.com/photo/deep-fried-food-with-sauce-served-in-a-restaurant-8463469/
+     *
+     * rice.jpg : Photo by Trista Chen: https://www.pexels.com/photo/cooked-rice-on-black-ceramic-plate-723198/
+     *
+     * rice2.jpg : Photo by Anna Tarazevich: https://www.pexels.com/photo/cooked-fried-rice-in-a-pan-6937455/
+     *
+     * pizza1.jpg : Photo by Dominika Roseclay: https://www.pexels.com/photo/tasty-pizza-with-chicken-near-fresh-basil-leaves-4288047/
+     *
+     * pizza2.jpg : Photo by Engin Akyurt: https://www.pexels.com/photo/food-photography-of-pizza-1552635/
+     *
+     * pizza3.jpg : Photo by Pablo  Macedo: https://www.pexels.com/photo/pepperoni-pizza-with-eggs-845802/
+     *
+     * pizza4.jpg : Photo by ahmad nawawi: https://www.pexels.com/photo/pizza-on-food-tray-2714722/
+     *
+     * pizza5.jpg : Photo by Brett Jordan: https://www.pexels.com/photo/pizza-on-brown-wooden-board-825661/
+     *
+     * piza6.jpg : Photo by Polina Tankilevitch: https://www.pexels.com/photo/person-holding-a-slice-of-pizza-4109111/
+     *
+     * pizza7.jpg : Photo by Engin Akyurt: https://www.pexels.com/photo/close-up-photo-of-pizza-2619970/
+     *
+     * pizza8.jpg : Photo by Jonathan Petersson: https://www.pexels.com/photo/close-up-photography-of-pizza-1166120/
+     *
+     * pizza9.jpg : Photo by Edward Eyer: https://www.pexels.com/photo/pizza-with-red-pepper-and-cheese-1049620/
+     *
+     * pizza10.jpg : Photo by Sean M.: https://www.pexels.com/photo/brown-and-red-pepperoni-pizza-166451/
+     *
+     * burger1.jpg : Photo by ENESFİLM: https://www.pexels.com/photo/person-holding-crispy-chicken-burger-with-cheese-8130752/
+     *
+     * burger2.jpg : Photo by Rajesh TP: https://www.pexels.com/photo/burger-on-top-of-wooden-board-near-two-red-chili-1633528/
+     *
+     * burger3.jpg : Photo by Valeria Boltneva: https://www.pexels.com/photo/ham-burger-with-vegetables-1639557/
+     *
+     * burger4.jpg : Photo by Jonathan Borba: https://www.pexels.com/photo/hamburger-and-fries-photo-2983101/
+     *
+     * burger5.jpg : Photo by Anna Tukhfatullina Food Photographer/Stylist: https://www.pexels.com/photo/burger-with-sliced-vegetables-close-up-photography-2702674/
+     *
+     * burger6.jpg : Photo by Jonathan Borba: https://www.pexels.com/photo/ham-and-bacon-burger-2983098/
+     *
+     * burger7.jpg : Photo by Engin Akyurt: https://www.pexels.com/photo/shallow-focus-photo-of-hamburger-2282532/
+     *
+     * burger8.jpg : Photo by Lucas Andrade: https://www.pexels.com/photo/cooked-food-on-the-table-12577527/
+     *
+     * burger9.jpg : Photo by Israel Albornoz: https://www.pexels.com/photo/close-up-of-a-hamburger-on-black-background-12034622/
+     *
+     * burger10.jpg : Photo by Isaac Taylor: https://www.pexels.com/photo/photo-of-cheeseburger-and-french-fries-2119758/
+     *
+     * burger11.jpg : Photo by Tioroshi Lazaro: https://www.pexels.com/photo/close-up-photo-of-burger-2874990/
+     *
+     * taco1.jpg : Photo by Geraud pfeiffer: https://www.pexels.com/photo/delicious-taco-with-slice-of-lime-on-wooden-board-6605212/
+     *
+     * taco2.jpg : Photo by Israel Albornoz: https://www.pexels.com/photo/close-up-of-a-taco-in-a-hand-12034452/
+     *
+     * tacos3.jpg : Photo by Vinícius Caricatte: https://www.pexels.com/photo/person-showing-taco-with-parsley-on-top-2338015/
+     *
+     * tacos4.jpg : Photo by Chitokan: https://www.pexels.com/photo/close-up-photo-of-rice-and-tacos-2087748/
+     *
+     * nachos1.jpg : Photo by Dayvison de Oliveira Silva: https://www.pexels.com/photo/bowl-with-guacamole-between-nachos-on-plate-5696562/
+     *
+     * nachos2.jpg : Photo by Alejandro Aznar: https://www.pexels.com/photo/nachos-on-checkered-wax-paper-12557544/
+     *
+     * icecream2.jpg : Photo by Cheresha: https://www.pexels.com/photo/white-container-filled-with-chocolate-assorted-color-chocolate-chips-and-one-waffle-1200034/
+     *
+     * icecream3.jpg : Photo by George  Stremplis: https://www.pexels.com/photo/ice-cream-on-cone-with-crushed-peanuts-and-brownies-1006190/
+     *
+     * icecream4.jpg : Photo by Layyana Sheridean: https://www.pexels.com/photo/close-up-photo-of-ice-cream-dessert-2846337/
+     *
+     * icecream5.jpg : Photo by Kristina Paukshtite: https://www.pexels.com/photo/sundae-in-shallow-photo-1146758/
+     *
+     * fries2.jpg : Photo by Valeria Boltneva: https://www.pexels.com/photo/fries-and-dipping-sauce-1893555/
+     *
+     * fries3.jpg : Photo by Marco Fischer: https://www.pexels.com/photo/french-fries-with-red-sauce-115740/
+     *
+     * fries4.jpg : Photo by KALZ📸🇺🇬: https://www.pexels.com/photo/fries-on-plate-2498440/
+     *
+     * submarine1.jpg : Photo by Pixabay: https://www.pexels.com/photo/bread-breakfast-bun-close-up-461382/
+     *
+     * submarine2.jpg : Photo by Rajesh TP: https://www.pexels.com/photo/white-cream-on-white-bowl-1633525/
+     *
+     * quesadilla.jpg : Photo by ROMAN ODINTSOV: https://www.pexels.com/photo/quesadillas-on-a-brown-wooden-board-with-sliced-limes-4955213/
+     *
+     * burrito.jpg : Photo by Pixabay: https://www.pexels.com/photo/close-up-photo-of-a-burrito-461198/
+     *
+     * wrap.jpg : Photo by bam awey: https://www.pexels.com/photo/meats-and-vegetables-on-black-oval-sizzling-plate-2015191/
+     *
+     * smoothie.jpg : Photo by Josh Sorenson: https://www.pexels.com/photo/shake-in-a-glass-990439/
+     */
+
 }

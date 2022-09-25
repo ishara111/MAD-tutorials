@@ -139,7 +139,7 @@ public class Login_fragment extends Fragment {
                         cv.put(UsersTable.Cols.ID, user.userid);
                         cv.put(UsersTable.Cols.EMAIL, user.email);
                         cv.put(UsersTable.Cols.PASSWORD, user.password);
-                        long res = db.insert(UsersTable.NAME, null, cv);
+                        db.insert(UsersTable.NAME, null, cv);
 
                         snack_text = ("Successfully Registered Account");
                     }
