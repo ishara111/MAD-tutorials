@@ -11,7 +11,7 @@
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/drawable/ic_restaurants.xml" value="0.1" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/drawable/rounded_corner.xml" value="0.2265" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/layout/checkout_list.xml" value="0.2" />
+        <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/layout/checkout_list.xml" value="0.536" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/layout/fragment_add_to_basket.xml" value="0.2" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/layout/fragment_checkout.xml" value="0.22146739130434784" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/layout/fragment_history_list.xml" value="0.22146739130434784" />
@@ -22,7 +22,7 @@
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/layout/fragment_restaurant.xml" value="0.1" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/layout/history_list.xml" value="0.4" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/layout/item_list.xml" value="0.264" />
-        <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/layout/order_list.xml" value="0.264" />
+        <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/layout/order_list.xml" value="0.4" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/menu/bottom_navigation.xml" value="0.1" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Assignment1/app/src/main/res/menu/checkout_menu.xml" value="0.25416666666666665" />
       </map>
