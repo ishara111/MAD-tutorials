@@ -1,3 +1,4 @@
+//uses 3rd party library Glide for image loading: https://bumptech.github.io/glide/
 package com.example.tutorial7;
 
 import android.content.Intent;
