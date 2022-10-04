@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Tutorial7/app/src/main/res/layout/activity_capture_photo.xml" value="0.2210144927536232" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Tutorial7/app/src/main/res/layout/activity_contact_info.xml" value="0.2210144927536232" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Tutorial7/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Tutorial7/app/src/main/res/layout/activity_thumbnail_photo.xml" value="0.2210144927536232" />
+        <entry key="..\:/ANDROID_STUDIO_INSTALL/apps/Tutorial7/app/src/main/res/xml/files.xml" value="0.2210144927536232" />
       </map>
     </option>
   </component>

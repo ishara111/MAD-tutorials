@@ -19,6 +19,7 @@ public class MainActivity extends AppCompatActivity {
         Button map = findViewById(R.id.map_btn);
         Button thumbnail = findViewById(R.id.capthumb_btn);
         Button contact = findViewById(R.id.contactinfo_btn);
+        Button capture = findViewById(R.id.capture_btn);
         EditText phone = findViewById(R.id.phone_text);
         EditText latitude= findViewById(R.id.latitude);
         EditText longitude = findViewById(R.id.longitude);
@@ -65,6 +66,14 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(MainActivity.this, ContactInfo.class);
+                startActivity(intent);
+            }
+        });
+
+        capture.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, CapturePhoto.class);
                 startActivity(intent);
             }
         });
