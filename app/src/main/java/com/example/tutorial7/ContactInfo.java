@@ -8,15 +8,16 @@ import android.net.Uri;
 import android.provider.ContactsContract;
 import android.provider.ContactsContract.CommonDataKinds.Email;
 import android.provider.ContactsContract.CommonDataKinds.Phone;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 public class ContactInfo extends AppCompatActivity {
 
@@ -126,9 +127,10 @@ public class ContactInfo extends AppCompatActivity {
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        if(requestCode == REQUEST_CONTACT && resultCode == RESULT_OK){
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == REQUEST_CONTACT && resultCode == RESULT_OK) {
             Uri contactUri = data.getData();
-            String[] queryFields = new String[] {
+            String[] queryFields = new String[]{
                     ContactsContract.Contacts._ID,
                     ContactsContract.Contacts.DISPLAY_NAME
             };
@@ -142,11 +144,10 @@ public class ContactInfo extends AppCompatActivity {
                     name.setVisibility(View.VISIBLE);
                     id.setVisibility(View.VISIBLE);
                     name.setText(contactName);
-                    id.setText("ID: "+String.valueOf(this.contactId));
+                    id.setText("ID: " + String.valueOf(this.contactId));
                     getInfo.setVisibility(View.VISIBLE);
                 }
-            }
-            finally {
+            } finally {
                 c.close();
             }
 
@@ -155,7 +156,8 @@ public class ContactInfo extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
-        if(requestCode==REQUEST_READ_CONTACT_PERMISSION){
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if (requestCode == REQUEST_READ_CONTACT_PERMISSION) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 Toast.makeText(ContactInfo.this, "Contact Reading Permission Granted", Toast.LENGTH_SHORT).show();
                 getInfoClicked();
