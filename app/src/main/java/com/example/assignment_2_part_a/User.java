@@ -1,31 +1,39 @@
 package com.example.assignment_2_part_a;
 
 public class User {
+
+    public class Address{
+        public String street;
+        public String suite;
+        public String city;
+        public int zipcode;
+        public Geo geo;
+
+        public Address()
+        {
+            this.geo = new Geo();
+        }
+
+        public class Geo{
+            public double lat;
+            public double lng;
+        }
+    }
+
+    public class Company{
+        public String companyName;
+        public String catchPhrase;
+        public String bs;
+    }
+
     public int id;
     public String name;
     public String username;
     public String email;
-
-    public static class Address{
-        public static String street;
-        public static String suite;
-        public static String city;
-        public static int zipcode;
-
-        public static class Geo{
-            public static double lat;
-            public static double lng;
-        }
-    }
-
     public String phone;
     public String website;
-
-    public static class Company{
-        public static String companyName;
-        public static String catchPhrase;
-        public static String bs;
-    }
+    public Address address;
+    public Company company;
 
     public User(String username) {
         this.username = username;
@@ -34,21 +42,24 @@ public class User {
     public User(int id, String name, String username, String email,
                 String street,String suite,String city,int zipcode,double lat,double lng,
                 String phone, String website, String companyName,String catchPhrase,String bs) {
+        this.address = new Address();
+        this.company = new Company();
+
         this.id = id;
         this.name = name;
         this.username = username;
         this.email = email;
-        Address.street = street;
-        Address.suite = suite;
-        Address.city = city;
-        Address.zipcode =zipcode;
-        Address.Geo.lat = lat;
-        Address.Geo.lng = lng;
+        this.address.street = street;
+        this.address.suite = suite;
+        this.address.city = city;
+        this.address.zipcode =zipcode;
+        this.address.geo.lat = lat;
+        this.address.geo.lng = lng;
         this.phone =phone;
         this.website = website;
-        Company.companyName = companyName;
-        Company.catchPhrase = catchPhrase;
-        Company.bs = bs;
+        this.company.companyName = companyName;
+        this.company.catchPhrase = catchPhrase;
+        this.company.bs = bs;
     }
 
 }
