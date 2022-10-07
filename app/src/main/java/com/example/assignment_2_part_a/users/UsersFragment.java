@@ -3,12 +3,17 @@ package com.example.assignment_2_part_a.users;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.assignment_2_part_a.R;
+import com.example.assignment_2_part_a.User;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,8 +31,13 @@ public class UsersFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    ArrayList<User> users;
+
     public UsersFragment() {
         // Required empty public constructor
+    }
+    public UsersFragment(ArrayList<User> users) {
+        this.users = users;
     }
 
     /**
@@ -61,6 +71,13 @@ public class UsersFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_users, container, false);
+        View view = inflater.inflate(R.layout.fragment_users, container, false);
+
+        RecyclerView rv = view.findViewById(R.id.users_recyclerview);
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        UsersAdapter myAdapter = new UsersAdapter(users);
+        rv.setAdapter(myAdapter);
+
+        return view;
     }
 }
