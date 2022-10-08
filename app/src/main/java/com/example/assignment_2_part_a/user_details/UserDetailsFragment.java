@@ -1,4 +1,4 @@
-package com.example.assignment_2_part_a;
+package com.example.assignment_2_part_a.user_details;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.assignment_2_part_a.R;
 
 /**
  * A simple {@link Fragment} subclass.

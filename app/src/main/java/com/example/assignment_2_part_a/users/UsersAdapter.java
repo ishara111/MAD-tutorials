@@ -8,8 +8,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.assignment_2_part_a.R;
 
-import com.example.assignment_2_part_a.User;
-
 import java.util.ArrayList;
 
 public class UsersAdapter extends RecyclerView.Adapter<UsersViewHolder>{

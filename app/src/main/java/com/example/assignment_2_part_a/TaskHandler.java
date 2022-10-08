@@ -5,6 +5,9 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.assignment_2_part_a.users.GetUsersTask;
+import com.example.assignment_2_part_a.users.User;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;

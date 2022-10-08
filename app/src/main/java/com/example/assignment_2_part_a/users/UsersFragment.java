@@ -11,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.assignment_2_part_a.R;
-import com.example.assignment_2_part_a.User;
 
 import java.util.ArrayList;
 

@@ -1,6 +1,8 @@
-package com.example.assignment_2_part_a;
+package com.example.assignment_2_part_a.users;
 
 import android.app.Activity;
+
+import com.example.assignment_2_part_a.ConnectionUtilities;
 
 import java.net.HttpURLConnection;
 import java.util.concurrent.Callable;

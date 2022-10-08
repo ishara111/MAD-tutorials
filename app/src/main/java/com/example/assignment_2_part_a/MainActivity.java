@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ProgressBar;
 
+import com.example.assignment_2_part_a.users.User;
 import com.example.assignment_2_part_a.users.UsersFragment;
 
 import java.util.ArrayList;
