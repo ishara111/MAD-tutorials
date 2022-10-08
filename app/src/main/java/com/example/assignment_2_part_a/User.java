@@ -6,7 +6,7 @@ public class User {
         public String street;
         public String suite;
         public String city;
-        public int zipcode;
+        public String zipcode;
         public Geo geo;
 
         public Address()
@@ -15,8 +15,8 @@ public class User {
         }
 
         public class Geo{
-            public double lat;
-            public double lng;
+            public String lat;
+            public String lng;
         }
     }
 
@@ -40,7 +40,7 @@ public class User {
     }
 
     public User(int id, String name, String username, String email,
-                String street,String suite,String city,int zipcode,double lat,double lng,
+                String street,String suite,String city,String zipcode,String lat,String lng,
                 String phone, String website, String companyName,String catchPhrase,String bs) {
         this.address = new Address();
         this.company = new Company();
