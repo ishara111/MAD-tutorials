@@ -1,8 +1,8 @@
 package com.example.assignment_2_part_a.posts;
 
 public class Post {
-    private String title;
-    private String body;
+    public String title;
+    public String body;
 
     public Post(String title, String body) {
         this.title = title;

@@ -1,12 +1,14 @@
-package com.example.assignment_2_part_a;
+package com.example.assignment_2_part_a.users;
 
 import android.app.Activity;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.assignment_2_part_a.MainActivity;
 import com.example.assignment_2_part_a.users.GetUsersTask;
 import com.example.assignment_2_part_a.users.User;
+import com.google.android.material.snackbar.Snackbar;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -20,13 +22,13 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.TimeoutException;
 
-public class TaskHandler implements Runnable{
+public class UsersTaskHandler implements Runnable{
     private Activity activity;
     private MainActivity ma;
     private ArrayList<User> users;
     private ProgressBar progressBar;
 
-    public TaskHandler(MainActivity ma,Activity activity,ArrayList<User> users,ProgressBar progressBar) {
+    public UsersTaskHandler(MainActivity ma, Activity activity, ArrayList<User> users, ProgressBar progressBar) {
         this.activity = activity;
         this.ma = ma;
         this.users=users;
@@ -45,7 +47,8 @@ public class TaskHandler implements Runnable{
             ma.startUsersFrag();
         }
         else{
-            showError(4,"Search");
+            Snackbar.make(activity.findViewById(android.R.id.content), "Something went wrong restart application",
+                    Snackbar.LENGTH_SHORT).show();
         }
         executorService.shutdown();
     }
@@ -83,32 +86,28 @@ public class TaskHandler implements Runnable{
                         city,zipcode,lat,lng,phone,website,cname,catchphrase,bs));
 
             }
-//            JSONArray jHits = jBase.getJSONArray("hits");
-//            if(jHits.length()>0){
-//                JSONObject jHitsItem = jHits.getJSONObject(0);
-//                imageUrl = jHitsItem.getString("largeImageURL");
-//            }
         } catch (JSONException e) {
             e.printStackTrace();
         }
     }
 
     public String awaitingUsers(Future<String> resPlaceholder){
-        showToast("Search Starts");
         String searchResponseData =null;
         try {
             searchResponseData = resPlaceholder.get(6000, TimeUnit.MILLISECONDS);
         } catch (ExecutionException e) {
             e.printStackTrace();
-            showError(1, "Search");
+            Snackbar.make(activity.findViewById(android.R.id.content), "Task Execution Exception",
+                    Snackbar.LENGTH_SHORT).show();
         } catch (InterruptedException e) {
             e.printStackTrace();
-            showError(2, "Search");
+            Snackbar.make(activity.findViewById(android.R.id.content), "Task Interrupted Exception",
+                    Snackbar.LENGTH_SHORT).show();
         } catch (TimeoutException e) {
             e.printStackTrace();
-            showError(3, "Search");
+            Snackbar.make(activity.findViewById(android.R.id.content), "Task Timeout Exception",
+                    Snackbar.LENGTH_SHORT).show();
         }
-        showToast("Search Ends");
         activity.runOnUiThread(new Runnable() {
             @Override
             public void run() {
@@ -116,29 +115,5 @@ public class TaskHandler implements Runnable{
             }
         });
         return  searchResponseData;
-    }
-
-    public void showError(int code, String taskName){
-        if(code ==1){
-            showToast(taskName+ " Task Execution Exception");
-        }
-        else if(code ==2){
-            showToast(taskName+" Task Interrupted Exception");
-        }
-        else if(code ==3){
-            showToast(taskName+" Task Timeout Exception");
-        }
-        else{
-            showToast(taskName+" Task could not be performed. Restart!!");
-        }
-    }
-
-    public void showToast(String text){
-        activity.runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(activity,text,Toast.LENGTH_SHORT).show();
-            }
-        });
     }
 }

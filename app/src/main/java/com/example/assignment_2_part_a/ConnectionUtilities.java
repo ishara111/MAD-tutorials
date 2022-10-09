@@ -3,6 +3,8 @@ package com.example.assignment_2_part_a;
 import android.app.Activity;
 import android.widget.Toast;
 
+import com.google.android.material.snackbar.Snackbar;
+
 import org.apache.commons.io.IOUtils;
 
 import java.io.IOException;
@@ -42,7 +44,8 @@ public class ConnectionUtilities {
             activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Toast.makeText(activity,"Check Internet",Toast.LENGTH_LONG).show();
+                    Snackbar.make(activity.findViewById(android.R.id.content), "Check Internet",
+                            Snackbar.LENGTH_SHORT).show();
                 }
             });
 
@@ -60,7 +63,9 @@ public class ConnectionUtilities {
             activity.runOnUiThread(new Runnable() {
                 @Override
                 public void run() {
-                    Toast.makeText(activity,"Problem with API Endpoint",Toast.LENGTH_LONG).show();
+                    Snackbar.make(activity.findViewById(android.R.id.content), "Problem with API Endpoint",
+                            Snackbar.LENGTH_SHORT).show();
+
                 }
             });
         }

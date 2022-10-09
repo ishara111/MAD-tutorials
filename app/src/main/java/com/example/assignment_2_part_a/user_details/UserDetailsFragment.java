@@ -7,9 +7,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.example.assignment_2_part_a.MainActivity;
 import com.example.assignment_2_part_a.R;
+import com.example.assignment_2_part_a.posts.Post;
+import com.example.assignment_2_part_a.posts.PostTaskHandler;
+import com.example.assignment_2_part_a.posts.PostsFragment;
+import com.example.assignment_2_part_a.users.UsersTaskHandler;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,6 +34,8 @@ public class UserDetailsFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+
+    int id;
 
     public UserDetailsFragment() {
         // Required empty public constructor
@@ -65,6 +75,7 @@ public class UserDetailsFragment extends Fragment {
        View view = inflater.inflate(R.layout.fragment_user_details, container, false);
 
         TextView name,username,email,address,geo,phone,website,cname,catchphrase,bs;
+        Button post;
 
         name = view.findViewById(R.id.name);
         username = view.findViewById(R.id.uname);
@@ -76,6 +87,7 @@ public class UserDetailsFragment extends Fragment {
         cname = view.findViewById(R.id.companyName);
         catchphrase = view.findViewById(R.id.catchphrase);
         bs = view.findViewById(R.id.bs);
+        post = view.findViewById(R.id.post_btn);
 
         name.setText("Name: "+getArguments().getString("name"));
         username.setText("Username: "+getArguments().getString("username"));
@@ -88,6 +100,17 @@ public class UserDetailsFragment extends Fragment {
         catchphrase.setText("CatchPhrase: "+getArguments().getString("catchPhrase"));
         bs.setText("Bs: "+getArguments().getString("bs"));
 
+        id = Integer.parseInt(getArguments().getString("id"));
+
+        post.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MainActivity ma = (MainActivity)getActivity();
+                ma.posts = new ArrayList<Post>();
+                PostTaskHandler postTaskHandler = new PostTaskHandler(ma, getActivity(),ma.posts,ma.progressBar,id);
+                ma.executorService.execute(postTaskHandler);
+            }
+        });
 
        return view;
     }
