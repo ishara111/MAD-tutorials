@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.assignment_2_part_a.R;
 
@@ -61,6 +62,33 @@ public class UserDetailsFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_user_details, container, false);
+       View view = inflater.inflate(R.layout.fragment_user_details, container, false);
+
+        TextView name,username,email,address,geo,phone,website,cname,catchphrase,bs;
+
+        name = view.findViewById(R.id.name);
+        username = view.findViewById(R.id.uname);
+        email = view.findViewById(R.id.email);
+        address = view.findViewById(R.id.address);
+        geo = view.findViewById(R.id.geo);
+        phone = view.findViewById(R.id.phone);
+        website = view.findViewById(R.id.website);
+        cname = view.findViewById(R.id.companyName);
+        catchphrase = view.findViewById(R.id.catchphrase);
+        bs = view.findViewById(R.id.bs);
+
+        name.setText("Name: "+getArguments().getString("name"));
+        username.setText("Username: "+getArguments().getString("username"));
+        email.setText("Email: "+getArguments().getString("email"));
+        address.setText("Address: "+getArguments().getString("address"));
+        geo.setText("Geo: "+getArguments().getString("geo"));
+        phone.setText("Phone: "+getArguments().getString("phone"));
+        website.setText("Website: "+getArguments().getString("website"));
+        cname.setText("CompanyName: "+getArguments().getString("companyName"));
+        catchphrase.setText("CatchPhrase: "+getArguments().getString("catchPhrase"));
+        bs.setText("Bs: "+getArguments().getString("bs"));
+
+
+       return view;
     }
 }
