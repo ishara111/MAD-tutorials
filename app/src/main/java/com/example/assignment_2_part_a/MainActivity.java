@@ -1,3 +1,8 @@
+/**
+ * Name: Ishara Gomes
+ * ID: 20534521
+ * Assignment 2 Part A
+ * **/
 package com.example.assignment_2_part_a;
 
 import androidx.appcompat.app.AppCompatActivity;
