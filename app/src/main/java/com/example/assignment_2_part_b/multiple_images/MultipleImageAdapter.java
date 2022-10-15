@@ -1,6 +1,7 @@
 package com.example.assignment_2_part_b.multiple_images;
 
 import android.graphics.Bitmap;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,37 +36,24 @@ public class MultipleImageAdapter extends RecyclerView.Adapter<MultipleImageView
         {
             holder.image1.setImageBitmap(images.get(position));
             holder.image2.setImageBitmap(images.get(position+1));
-        }
-        else
+        }else
         {
-            holder.image1.setImageBitmap(images.get(position+1));
-            holder.image2.setImageBitmap(images.get(position+2));
+            holder.image1.setImageBitmap(images.get(position+(1+position)));
+            holder.image2.setImageBitmap(images.get(position+(2+position)));
+            Log.d(null,""+position);
         }
+
     }
 
     @Override
     public int getItemCount() {
         if(images.size()% 2 == 0)
         {
-            if(images.size()>15)
-            {
-                return 7;
-            }
-            else
-            {
-                return images.size()/2;
-            }
+            return images.size()/2;
         }
         else
         {
-            if(images.size()-1 >14)
-            {
-                return 7;
-            }
-            else
-            {
-                return images.size() - 1 /2;
-            }
+            return (images.size()-1)/2;
         }
 
     }
