@@ -101,8 +101,14 @@ public class SearchPageFragment extends Fragment {
             @Override
             public void onClick(View view) {
 
-                searchImage();
-                ma = (MainActivity)getActivity();
+                if(!searchText.getText().toString().equals(""))
+                {
+                    searchImage();
+                    ma = (MainActivity)getActivity();
+                }
+                else {
+                    searchText.setError("Cannot be empty");
+                }
 
 
             }

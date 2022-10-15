@@ -31,6 +31,7 @@ public class SingleImageAdapter extends RecyclerView.Adapter<SingleImageViewHold
     @Override
     public void onBindViewHolder(@NonNull SingleImageViewHolder holder, int position) {
         holder.image.setImageBitmap(images.get(position));
+        holder.bitmap = images.get(position);
     }
 
     @Override

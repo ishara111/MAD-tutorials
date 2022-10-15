@@ -36,12 +36,18 @@ public class MultipleImageAdapter extends RecyclerView.Adapter<MultipleImageView
         {
             holder.image1.setImageBitmap(images.get(position));
             holder.image2.setImageBitmap(images.get(position+1));
+
+            holder.bitmap1 = images.get(position);
+            holder.bitmap2 = images.get(position+1);
         }else
         {
             holder.image1.setImageBitmap(images.get(position+(1+position)));
             holder.image2.setImageBitmap(images.get(position+(2+position)));
-            Log.d(null,""+position);
+
+            holder.bitmap1 = images.get(position+(1+position));
+            holder.bitmap2 = images.get(position+(2+position));
         }
+
 
     }
 
