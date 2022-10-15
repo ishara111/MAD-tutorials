@@ -1,10 +1,12 @@
-package com.example.assignment_2_part_b;
+package com.example.assignment_2_part_b.tasks;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.widget.Toast;
+
+import com.example.assignment_2_part_b.RemoteUtilities;
 
 import org.json.JSONArray;
 import org.json.JSONException;

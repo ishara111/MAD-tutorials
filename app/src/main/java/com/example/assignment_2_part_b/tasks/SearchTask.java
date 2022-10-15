@@ -1,6 +1,8 @@
-package com.example.assignment_2_part_b;
+package com.example.assignment_2_part_b.tasks;
 
 import android.app.Activity;
+
+import com.example.assignment_2_part_b.RemoteUtilities;
 
 import java.net.HttpURLConnection;
 import java.util.concurrent.Callable;

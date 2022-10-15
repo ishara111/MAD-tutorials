@@ -1,6 +1,5 @@
-package com.example.assignment_2_part_b;
+package com.example.assignment_2_part_b.search_page;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
@@ -16,7 +15,11 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.assignment_2_part_b.MainActivity;
+import com.example.assignment_2_part_b.R;
 import com.example.assignment_2_part_b.single_image.SingleImageFragment;
+import com.example.assignment_2_part_b.tasks.ImageRetrieveTask;
+import com.example.assignment_2_part_b.tasks.SearchTask;
 
 import java.util.ArrayList;
 
@@ -139,7 +142,6 @@ public class SearchPageFragment extends Fragment {
         ImageRetrieveTask imageRetrievalTask = new ImageRetrieveTask(activity);
         imageRetrievalTask.setData(response);
 
-        Toast.makeText(activity, "Image loading starts", Toast.LENGTH_SHORT).show();
         progressBar.setVisibility(View.VISIBLE);
         Single<ArrayList<Bitmap>> searchObservable = Single.fromCallable(imageRetrievalTask);
         searchObservable = searchObservable.subscribeOn(Schedulers.io());
@@ -152,7 +154,6 @@ public class SearchPageFragment extends Fragment {
 
             @Override
             public void onSuccess(@NonNull ArrayList<Bitmap> bitmaps) {
-                Toast.makeText(activity, "Image loading Ends", Toast.LENGTH_SHORT).show();
                 progressBar.setVisibility(View.INVISIBLE);
                 for (Bitmap bitmap:bitmaps) {
                     ma.images.add(bitmap);

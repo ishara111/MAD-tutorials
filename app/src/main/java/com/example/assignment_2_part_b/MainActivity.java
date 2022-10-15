@@ -2,31 +2,18 @@ package com.example.assignment_2_part_b;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.ProgressBar;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.assignment_2_part_b.multiple_images.MultipleImageFragment;
+import com.example.assignment_2_part_b.search_page.SearchPageFragment;
 import com.example.assignment_2_part_b.single_image.SingleImageFragment;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.util.ArrayList;
-
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers;
-import io.reactivex.rxjava3.annotations.NonNull;
-import io.reactivex.rxjava3.core.Single;
-import io.reactivex.rxjava3.core.SingleObserver;
-import io.reactivex.rxjava3.disposables.Disposable;
-import io.reactivex.rxjava3.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {
     public boolean singleView = true;
@@ -41,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         images = new ArrayList<Bitmap>();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new SearchPageFragment()).commit();
+                new SearchPageFragment()).addToBackStack(null).commit();
 
 
     }

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchPageFragment">
+    tools:context=".search_page.SearchPageFragment">
 
     <EditText
         android:id="@+id/searchBox"
