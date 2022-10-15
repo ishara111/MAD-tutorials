@@ -1,14 +1,20 @@
 package com.example.assignment_2_part_b.single_image;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.assignment_2_part_b.MainActivity;
 import com.example.assignment_2_part_b.R;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,8 +32,13 @@ public class SingleImageFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    ArrayList<Bitmap> images;
+
     public SingleImageFragment() {
         // Required empty public constructor
+    }
+    public SingleImageFragment(ArrayList<Bitmap> images) {
+        this.images = images;
     }
 
     /**
@@ -61,6 +72,15 @@ public class SingleImageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_single_image, container, false);
+
+        View view= inflater.inflate(R.layout.fragment_single_image, container, false);
+        RecyclerView rv = view.findViewById(R.id.single_recyclerview);
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        SingleImageAdapter singleImageAdapter= new SingleImageAdapter(images);
+        rv.setAdapter(singleImageAdapter);
+
+        MainActivity ma = (MainActivity)getActivity();
+        ma.singleView=false;
+        return view;
     }
 }

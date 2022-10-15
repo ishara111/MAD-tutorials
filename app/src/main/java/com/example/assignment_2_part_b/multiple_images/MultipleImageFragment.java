@@ -1,14 +1,21 @@
 package com.example.assignment_2_part_b.multiple_images;
 
+import android.graphics.Bitmap;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.assignment_2_part_b.MainActivity;
 import com.example.assignment_2_part_b.R;
+import com.example.assignment_2_part_b.single_image.SingleImageAdapter;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,10 +33,15 @@ public class MultipleImageFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
+    ArrayList<Bitmap> images;
+
     public MultipleImageFragment() {
         // Required empty public constructor
     }
 
+    public MultipleImageFragment(ArrayList<Bitmap> images) {
+        this.images = images;
+    }
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -61,6 +73,15 @@ public class MultipleImageFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_multiple_image, container, false);
+        View view= inflater.inflate(R.layout.fragment_multiple_image, container, false);
+        RecyclerView rv = view.findViewById(R.id.multi_recyclerview);
+        rv.setLayoutManager(new LinearLayoutManager(getContext()));
+        MultipleImageAdapter multipleImageAdapter= new MultipleImageAdapter(images);
+        rv.setAdapter(multipleImageAdapter);
+
+        MainActivity ma = (MainActivity)getActivity();
+        ma.singleView=true;
+
+        return view;
     }
 }
