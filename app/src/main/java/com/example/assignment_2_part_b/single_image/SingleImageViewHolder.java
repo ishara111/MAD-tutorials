@@ -63,6 +63,12 @@ public class SingleImageViewHolder extends RecyclerView.ViewHolder{
                                 Snackbar.make(activity.findViewById(android.R.id.content),
                                         "Error uploading", Snackbar.LENGTH_SHORT).show();
                             }
+                        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
+                                Snackbar.make(activity.findViewById(android.R.id.content),
+                                        "Uploading....", Snackbar.LENGTH_SHORT).show();
+                            }
                         });
             }
         });

@@ -57,6 +57,12 @@ public class MultipleImageViewHolder extends RecyclerView.ViewHolder{
                                 Snackbar.make(activity.findViewById(android.R.id.content),
                                         "Error uploading", Snackbar.LENGTH_SHORT).show();
                             }
+                        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
+                                Snackbar.make(activity.findViewById(android.R.id.content),
+                                        "Uploading....", Snackbar.LENGTH_SHORT).show();
+                            }
                         });
             }
         });
@@ -85,6 +91,12 @@ public class MultipleImageViewHolder extends RecyclerView.ViewHolder{
                             public void onFailure(@NonNull Exception e) {
                                 Snackbar.make(activity.findViewById(android.R.id.content),
                                         "Error uploading", Snackbar.LENGTH_SHORT).show();
+                            }
+                        }).addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                            @Override
+                            public void onProgress(@NonNull UploadTask.TaskSnapshot taskSnapshot) {
+                                Snackbar.make(activity.findViewById(android.R.id.content),
+                                        "Uploading....", Snackbar.LENGTH_SHORT).show();
                             }
                         });
             }

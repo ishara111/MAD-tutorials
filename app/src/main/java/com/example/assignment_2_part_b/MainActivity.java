@@ -1,3 +1,7 @@
+/**Name: Ishara Gomes
+ * ID: 20534521
+ * Assignment-2 Part B
+ * **/
 package com.example.assignment_2_part_b;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -28,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         images = new ArrayList<Bitmap>();
 
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                new SearchPageFragment()).addToBackStack(null).commit();
+                new SearchPageFragment()).commit();
 
 
     }
@@ -42,24 +46,36 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@androidx.annotation.NonNull MenuItem item) {  //action menu
+        if (item.getItemId()==R.id.search_menu_Btn)
+        {
+            images = new ArrayList<Bitmap>();
+            getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new SearchPageFragment()).commit();
+        }
         if (item.getItemId()==R.id.switch_view_Btn)
         {
-            if (singleView)
+            if(images.size()!=0)
             {
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new SingleImageFragment(images)).commit();
-            }
-            else{
-                if(images.size()!=1)
+                if (singleView)
                 {
                     getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                            new MultipleImageFragment(images)).commit();
+                            new SingleImageFragment(images)).commit();
                 }
-                else
-                {
-                    Snackbar.make(this.findViewById(android.R.id.content),
-                            "Cannot change view only 1 search result", Snackbar.LENGTH_SHORT).show();
+                else{
+                    if(images.size()!=1)
+                    {
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new MultipleImageFragment(images)).commit();
+                    }
+                    else
+                    {
+                        Snackbar.make(this.findViewById(android.R.id.content),
+                                "Cannot change view only 1 search result", Snackbar.LENGTH_SHORT).show();
+                    }
                 }
+            }else{
+                Snackbar.make(this.findViewById(android.R.id.content),
+                        "Search for images first", Snackbar.LENGTH_SHORT).show();
             }
         }
         return super.onOptionsItemSelected(item);
